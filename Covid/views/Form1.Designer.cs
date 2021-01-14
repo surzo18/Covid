@@ -38,6 +38,7 @@ namespace Covid.Views
             this.gunaAdvenceButton2 = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaAdvenceButton3 = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaAdvenceButton4 = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.gunaPanel3 = new Guna.UI.WinForms.GunaPanel();
             this.gunaPanel1.SuspendLayout();
             this.gunaPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -119,6 +120,7 @@ namespace Covid.Views
             this.gunaAdvenceButton1.OnHoverImage = null;
             this.gunaAdvenceButton1.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(72)))), ((int)(((byte)(114)))));
             this.gunaAdvenceButton1.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaAdvenceButton1.OnPressedDepth = 0;
             this.gunaAdvenceButton1.Size = new System.Drawing.Size(180, 50);
             this.gunaAdvenceButton1.TabIndex = 1;
             this.gunaAdvenceButton1.Text = "Import";
@@ -152,9 +154,10 @@ namespace Covid.Views
             this.gunaAdvenceButton2.OnHoverImage = null;
             this.gunaAdvenceButton2.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(72)))), ((int)(((byte)(114)))));
             this.gunaAdvenceButton2.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaAdvenceButton2.OnPressedDepth = 0;
             this.gunaAdvenceButton2.Size = new System.Drawing.Size(180, 50);
             this.gunaAdvenceButton2.TabIndex = 2;
-            this.gunaAdvenceButton2.Text = "Import";
+            this.gunaAdvenceButton2.Text = "Fronta";
             // 
             // gunaAdvenceButton3
             // 
@@ -185,9 +188,10 @@ namespace Covid.Views
             this.gunaAdvenceButton3.OnHoverImage = null;
             this.gunaAdvenceButton3.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(72)))), ((int)(((byte)(114)))));
             this.gunaAdvenceButton3.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaAdvenceButton3.OnPressedDepth = 0;
             this.gunaAdvenceButton3.Size = new System.Drawing.Size(180, 50);
             this.gunaAdvenceButton3.TabIndex = 3;
-            this.gunaAdvenceButton3.Text = "Import";
+            this.gunaAdvenceButton3.Text = "Export";
             // 
             // gunaAdvenceButton4
             // 
@@ -219,9 +223,19 @@ namespace Covid.Views
             this.gunaAdvenceButton4.OnHoverImage = null;
             this.gunaAdvenceButton4.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(72)))), ((int)(((byte)(114)))));
             this.gunaAdvenceButton4.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaAdvenceButton4.OnPressedDepth = 0;
             this.gunaAdvenceButton4.Size = new System.Drawing.Size(180, 50);
             this.gunaAdvenceButton4.TabIndex = 4;
-            this.gunaAdvenceButton4.Text = "Import";
+            this.gunaAdvenceButton4.Text = "Odhlasenie";
+            // 
+            // gunaPanel3
+            // 
+            this.gunaPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.gunaPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaPanel3.Location = new System.Drawing.Point(180, 0);
+            this.gunaPanel3.Name = "gunaPanel3";
+            this.gunaPanel3.Size = new System.Drawing.Size(780, 620);
+            this.gunaPanel3.TabIndex = 1;
             // 
             // Form1
             // 
@@ -229,11 +243,13 @@ namespace Covid.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 620);
+            this.Controls.Add(this.gunaPanel3);
             this.Controls.Add(this.gunaPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "COVID DAZABÁZA";
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel2.ResumeLayout(false);
             this.gunaPanel2.PerformLayout();
@@ -252,5 +268,6 @@ namespace Covid.Views
         private Guna.UI.WinForms.GunaAdvenceButton gunaAdvenceButton1;
         private Guna.UI.WinForms.GunaAdvenceButton gunaAdvenceButton4;
         private Guna.UI.WinForms.GunaAdvenceButton gunaAdvenceButton3;
+        private Guna.UI.WinForms.GunaPanel gunaPanel3;
     }
 }
