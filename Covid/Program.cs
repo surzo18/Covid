@@ -16,7 +16,8 @@ namespace Covid
         [STAThread]
         static void Main()
         {
-            Connection.GetDataTable("select * from user");
+           // Connection.GetDataTable("select * from user");
+           // Connection.GetDataTable("select * from user");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
