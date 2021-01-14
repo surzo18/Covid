@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Covid.Views
 {
-    public partial class Form3 : Form
+    public partial class Login_Page : Form
     {
-        public Form3()
+        public Login_Page()
         {
             InitializeComponent();
         }
@@ -20,6 +20,12 @@ namespace Covid.Views
         private void Form3_Load(object sender, EventArgs e)
         {
             guna2ShadowForm1.SetShadowForm(this);
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            MainMenu _load = new MainMenu();
+            _load.Show();
         }
     }
 }

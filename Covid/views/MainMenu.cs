@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Covid.Views
 {
-    public partial class Form1 : Form
+    public partial class MainMenu : Form
     {
-        public Form1()
+        public MainMenu()
         {
             InitializeComponent();
         }

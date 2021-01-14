@@ -1,7 +1,7 @@
 ﻿
 namespace Covid.Views
 {
-    partial class Form3
+    partial class Login_Page
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Covid.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login_Page));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.gunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
@@ -135,12 +135,13 @@ namespace Covid.Views
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(186, 371);
+            this.guna2Button1.Location = new System.Drawing.Point(187, 371);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
             this.guna2Button1.Size = new System.Drawing.Size(123, 29);
             this.guna2Button1.TabIndex = 6;
             this.guna2Button1.Text = "Prihlásiť sa";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2CheckBox1
             // 
@@ -178,6 +179,7 @@ namespace Covid.Views
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
             this.TransparencyKey = System.Drawing.Color.Lime;
             this.Load += new System.EventHandler(this.Form3_Load);
