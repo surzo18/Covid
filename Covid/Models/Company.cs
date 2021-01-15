@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Covid.Models
 {
-    class Class1
+    class Company
     {
+        private int id { get; set; }
+        private string name { get; set; }
+        private int address { get; set; }
     }
 }

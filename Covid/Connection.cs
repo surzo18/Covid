@@ -12,65 +12,40 @@ namespace Covid
     //////SQLite Edition 
     class Connection
     {
+        string sqlLiteDatabaseName = @"URI=file:C:\Users\Admin\Code\Covid\Covid\CovidDatabase.sqlite3";
+        SQLiteConnection conn;
 
-        // Connection String for  SQlite Edition 
-        static string _ConnectionString = @"Data Source=./CovidDatabase;Version=3;New=False;Compress=True";
-
-        // Use for ..exe.config file  
-        //   static string _ConnectionString = Sqtlie_project_tutorial.Properties.Settings.Default.SqliteDBtestConnectionString1; 
-
-        static SQLiteConnection _Connection = null;
-        public static SQLiteConnection Connections
+        public Connection()
         {
-            get
+            try
             {
-                if (_Connection == null)
-                {
-                    _Connection = new SQLiteConnection(_ConnectionString);
-                    _Connection.Open();
-
-                    return _Connection;
-                }
-                else if (_Connection.State != System.Data.ConnectionState.Open)
-                {
-                    _Connection.Open();
-
-                    return _Connection;
-                }
-                else
-                {
-                    return _Connection;
-                }
+                this.conn = new SQLiteConnection(this.sqlLiteDatabaseName);
             }
+            catch(SQLiteException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                Console.WriteLine("Pripojeny");
+            }
+
+
         }
 
-        public static DataSet GetDataSet(string sql)
-        {
-            SQLiteCommand cmd = new SQLiteCommand(sql, Connections);
-            SQLiteDataAdapter adp = new SQLiteDataAdapter(cmd);
 
-            DataSet ds = new DataSet();
-            adp.Fill(ds);
-            Connections.Close();
+        /*
+                conn.Open();
+        string stm = "SELECT * FROM company LIMIT 5";
 
-            return ds;
-        }
+        SQLiteCommand cmd = new SQLiteCommand(stm, conn);
+        SQLiteDataReader rdr = cmd.ExecuteReader();
 
-        public static DataTable GetDataTable(string sql)
-        {
-            Console.WriteLine(sql);
-            DataSet ds = GetDataSet(sql);
-
-            if (ds.Tables.Count > 0)
-                return ds.Tables[0];
-            return null;
-        }
-
-        public static int ExecuteSQL(string sql)
-        {
-            SQLiteCommand cmd = new SQLiteCommand(sql, Connections);
-            return cmd.ExecuteNonQuery();
-        }
+            while (rdr.Read())
+            {
+                Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetInt32(2)}");
+            }
+        */
     }
 
 }
