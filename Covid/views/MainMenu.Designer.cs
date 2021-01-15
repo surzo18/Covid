@@ -48,6 +48,7 @@ namespace Covid.Views
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel_container = new Guna.UI2.WinForms.Guna2Panel();
             this.gunaTransfarantPictureBox1 = new Guna.UI.WinForms.GunaTransfarantPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gunaPanel1.SuspendLayout();
             this.gunaPanel2.SuspendLayout();
             this.guna2Panel_top.SuspendLayout();
@@ -59,6 +60,7 @@ namespace Covid.Views
             // gunaPanel1
             // 
             this.gunaPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
+            this.gunaPanel1.Controls.Add(this.label1);
             this.gunaPanel1.Controls.Add(this.gunaAdvenceButton5);
             this.gunaPanel1.Controls.Add(this.gunaAdvenceButton4);
             this.gunaPanel1.Controls.Add(this.gunaAdvenceButton3);
@@ -278,19 +280,20 @@ namespace Covid.Views
             this.guna2Panel_top.ShadowDecoration.Parent = this.guna2Panel_top;
             this.guna2Panel_top.Size = new System.Drawing.Size(780, 59);
             this.guna2Panel_top.TabIndex = 1;
+            this.guna2Panel_top.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel_top_Paint);
             // 
             // label1_val
             // 
             this.label1_val.AutoSize = true;
             this.label1_val.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1_val.Location = new System.Drawing.Point(62, 19);
+            this.label1_val.Location = new System.Drawing.Point(68, 19);
             this.label1_val.Name = "label1_val";
             this.label1_val.Size = new System.Drawing.Size(0, 21);
             this.label1_val.TabIndex = 4;
             // 
             // guna2PictureBox_val
             // 
-            this.guna2PictureBox_val.Location = new System.Drawing.Point(20, 12);
+            this.guna2PictureBox_val.Location = new System.Drawing.Point(26, 12);
             this.guna2PictureBox_val.Name = "guna2PictureBox_val";
             this.guna2PictureBox_val.ShadowDecoration.Parent = this.guna2PictureBox_val;
             this.guna2PictureBox_val.Size = new System.Drawing.Size(36, 34);
@@ -362,6 +365,17 @@ namespace Covid.Views
             this.gunaTransfarantPictureBox1.TabIndex = 0;
             this.gunaTransfarantPictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(209)))), ((int)(((byte)(218)))));
+            this.label1.Location = new System.Drawing.Point(8, 482);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(169, 25);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "počet testovanych";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,6 +392,7 @@ namespace Covid.Views
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "COVID DAZABÁZA";
             this.gunaPanel1.ResumeLayout(false);
+            this.gunaPanel1.PerformLayout();
             this.gunaPanel2.ResumeLayout(false);
             this.gunaPanel2.PerformLayout();
             this.guna2Panel_top.ResumeLayout(false);
@@ -408,5 +423,6 @@ namespace Covid.Views
         private Guna.UI.WinForms.GunaTransfarantPictureBox gunaTransfarantPictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox_val;
         private System.Windows.Forms.Label label1_val;
+        private System.Windows.Forms.Label label1;
     }
 }

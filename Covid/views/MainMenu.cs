@@ -19,8 +19,7 @@ namespace Covid.Views
 
         private void gunaAdvenceButton1_Click(object sender, EventArgs e)
         {
-            label1_val.Text = "Hľadanie";
-            guna2PictureBox_val.Image = Properties.Resources.icons8_download_from_the_cloud_32;
+            guna2PictureBox_val.Image = Properties.Resources.icons8_search_property_32;
             container(new Search());
         }
 
@@ -38,5 +37,9 @@ namespace Covid.Views
 
         }
 
+        private void guna2Panel_top_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
