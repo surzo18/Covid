@@ -36,10 +36,28 @@ namespace Covid.Views
             fm.Show();
 
         }
-
+       
         private void guna2Panel_top_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void gunaAdvenceButton4_Click(object sender, EventArgs e)
+        {
+            guna2PictureBox_val.Image = Properties.Resources.icons8_form_32;
+            container(new Fronta());
+        }
+
+        private void gunaAdvenceButton3_Click(object sender, EventArgs e)
+        {
+            guna2PictureBox_val.Image = Properties.Resources.icons8_download_from_the_cloud_32;
+            container(new Import());
+        }
+
+        private void gunaAdvenceButton2_Click(object sender, EventArgs e)
+        {
+            guna2PictureBox_val.Image = Properties.Resources.icons8_upload_to_the_cloud_32;
+            container(new Export());
         }
     }
 }

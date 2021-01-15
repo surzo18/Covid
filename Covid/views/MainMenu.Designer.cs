@@ -32,29 +32,29 @@ namespace Covid.Views
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
-            this.gunaAdvenceButton5 = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.gunaAdvenceButton4 = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.gunaAdvenceButton3 = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.gunaAdvenceButton2 = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.gunaAdvenceButton1 = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.guna2Panel_top = new Guna.UI2.WinForms.Guna2Panel();
             this.label1_val = new System.Windows.Forms.Label();
-            this.guna2PictureBox_val = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel_container = new Guna.UI2.WinForms.Guna2Panel();
             this.gunaTransfarantPictureBox1 = new Guna.UI.WinForms.GunaTransfarantPictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.guna2PictureBox_val = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.gunaAdvenceButton5 = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.gunaAdvenceButton4 = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.gunaAdvenceButton3 = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.gunaAdvenceButton2 = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.gunaAdvenceButton1 = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaPanel1.SuspendLayout();
             this.gunaPanel2.SuspendLayout();
             this.guna2Panel_top.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox_val)).BeginInit();
             this.guna2Panel_container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaTransfarantPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox_val)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaPanel1
@@ -72,6 +72,137 @@ namespace Covid.Views
             this.gunaPanel1.Name = "gunaPanel1";
             this.gunaPanel1.Size = new System.Drawing.Size(180, 620);
             this.gunaPanel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(209)))), ((int)(((byte)(218)))));
+            this.label1.Location = new System.Drawing.Point(8, 482);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(169, 25);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "počet testovanych";
+            // 
+            // gunaPanel2
+            // 
+            this.gunaPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.gunaPanel2.Controls.Add(this.gunaLabel1);
+            this.gunaPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gunaPanel2.Location = new System.Drawing.Point(0, 0);
+            this.gunaPanel2.Name = "gunaPanel2";
+            this.gunaPanel2.Size = new System.Drawing.Size(180, 59);
+            this.gunaPanel2.TabIndex = 0;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold);
+            this.gunaLabel1.ForeColor = System.Drawing.Color.White;
+            this.gunaLabel1.Location = new System.Drawing.Point(6, 19);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(163, 25);
+            this.gunaLabel1.TabIndex = 0;
+            this.gunaLabel1.Text = "COVID DATABÁZA";
+            // 
+            // guna2Panel_top
+            // 
+            this.guna2Panel_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
+            this.guna2Panel_top.Controls.Add(this.label1_val);
+            this.guna2Panel_top.Controls.Add(this.guna2PictureBox_val);
+            this.guna2Panel_top.Controls.Add(this.guna2ControlBox3);
+            this.guna2Panel_top.Controls.Add(this.guna2ControlBox2);
+            this.guna2Panel_top.Controls.Add(this.guna2ControlBox1);
+            this.guna2Panel_top.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel_top.Location = new System.Drawing.Point(180, 0);
+            this.guna2Panel_top.Name = "guna2Panel_top";
+            this.guna2Panel_top.ShadowDecoration.Parent = this.guna2Panel_top;
+            this.guna2Panel_top.Size = new System.Drawing.Size(780, 59);
+            this.guna2Panel_top.TabIndex = 1;
+            this.guna2Panel_top.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel_top_Paint);
+            // 
+            // label1_val
+            // 
+            this.label1_val.AutoSize = true;
+            this.label1_val.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1_val.Location = new System.Drawing.Point(68, 19);
+            this.label1_val.Name = "label1_val";
+            this.label1_val.Size = new System.Drawing.Size(0, 21);
+            this.label1_val.TabIndex = 4;
+            // 
+            // guna2ControlBox3
+            // 
+            this.guna2ControlBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
+            this.guna2ControlBox3.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox3.HoverState.Parent = this.guna2ControlBox3;
+            this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox3.Location = new System.Drawing.Point(681, 3);
+            this.guna2ControlBox3.Name = "guna2ControlBox3";
+            this.guna2ControlBox3.ShadowDecoration.Parent = this.guna2ControlBox3;
+            this.guna2ControlBox3.Size = new System.Drawing.Size(45, 29);
+            this.guna2ControlBox3.TabIndex = 2;
+            // 
+            // guna2ControlBox2
+            // 
+            this.guna2ControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox2.HoverState.Parent = this.guna2ControlBox2;
+            this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox2.Location = new System.Drawing.Point(630, 3);
+            this.guna2ControlBox2.Name = "guna2ControlBox2";
+            this.guna2ControlBox2.ShadowDecoration.Parent = this.guna2ControlBox2;
+            this.guna2ControlBox2.Size = new System.Drawing.Size(45, 29);
+            this.guna2ControlBox2.TabIndex = 1;
+            // 
+            // guna2ControlBox1
+            // 
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.HoverState.Parent = this.guna2ControlBox1;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(732, 3);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.ShadowDecoration.Parent = this.guna2ControlBox1;
+            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
+            this.guna2ControlBox1.TabIndex = 0;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.guna2Panel_top;
+            // 
+            // guna2Panel_container
+            // 
+            this.guna2Panel_container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(30)))));
+            this.guna2Panel_container.Controls.Add(this.gunaTransfarantPictureBox1);
+            this.guna2Panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel_container.Location = new System.Drawing.Point(180, 59);
+            this.guna2Panel_container.Name = "guna2Panel_container";
+            this.guna2Panel_container.ShadowDecoration.Parent = this.guna2Panel_container;
+            this.guna2Panel_container.Size = new System.Drawing.Size(780, 561);
+            this.guna2Panel_container.TabIndex = 2;
+            // 
+            // gunaTransfarantPictureBox1
+            // 
+            this.gunaTransfarantPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.gunaTransfarantPictureBox1.BaseColor = System.Drawing.Color.Transparent;
+            this.gunaTransfarantPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("gunaTransfarantPictureBox1.Image")));
+            this.gunaTransfarantPictureBox1.Location = new System.Drawing.Point(138, 75);
+            this.gunaTransfarantPictureBox1.Name = "gunaTransfarantPictureBox1";
+            this.gunaTransfarantPictureBox1.Size = new System.Drawing.Size(501, 321);
+            this.gunaTransfarantPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.gunaTransfarantPictureBox1.TabIndex = 0;
+            this.gunaTransfarantPictureBox1.TabStop = false;
+            // 
+            // guna2PictureBox_val
+            // 
+            this.guna2PictureBox_val.Location = new System.Drawing.Point(26, 12);
+            this.guna2PictureBox_val.Name = "guna2PictureBox_val";
+            this.guna2PictureBox_val.ShadowDecoration.Parent = this.guna2PictureBox_val;
+            this.guna2PictureBox_val.Size = new System.Drawing.Size(36, 34);
+            this.guna2PictureBox_val.TabIndex = 3;
+            this.guna2PictureBox_val.TabStop = false;
             // 
             // gunaAdvenceButton5
             // 
@@ -141,6 +272,7 @@ namespace Covid.Views
             this.gunaAdvenceButton4.Size = new System.Drawing.Size(180, 50);
             this.gunaAdvenceButton4.TabIndex = 4;
             this.gunaAdvenceButton4.Text = "Fronta";
+            this.gunaAdvenceButton4.Click += new System.EventHandler(this.gunaAdvenceButton4_Click);
             // 
             // gunaAdvenceButton3
             // 
@@ -175,6 +307,7 @@ namespace Covid.Views
             this.gunaAdvenceButton3.Size = new System.Drawing.Size(180, 50);
             this.gunaAdvenceButton3.TabIndex = 3;
             this.gunaAdvenceButton3.Text = "Import";
+            this.gunaAdvenceButton3.Click += new System.EventHandler(this.gunaAdvenceButton3_Click);
             // 
             // gunaAdvenceButton2
             // 
@@ -209,6 +342,7 @@ namespace Covid.Views
             this.gunaAdvenceButton2.Size = new System.Drawing.Size(180, 50);
             this.gunaAdvenceButton2.TabIndex = 2;
             this.gunaAdvenceButton2.Text = "Export";
+            this.gunaAdvenceButton2.Click += new System.EventHandler(this.gunaAdvenceButton2_Click);
             // 
             // gunaAdvenceButton1
             // 
@@ -245,137 +379,6 @@ namespace Covid.Views
             this.gunaAdvenceButton1.Text = "Hľadanie";
             this.gunaAdvenceButton1.Click += new System.EventHandler(this.gunaAdvenceButton1_Click);
             // 
-            // gunaPanel2
-            // 
-            this.gunaPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.gunaPanel2.Controls.Add(this.gunaLabel1);
-            this.gunaPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gunaPanel2.Location = new System.Drawing.Point(0, 0);
-            this.gunaPanel2.Name = "gunaPanel2";
-            this.gunaPanel2.Size = new System.Drawing.Size(180, 59);
-            this.gunaPanel2.TabIndex = 0;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold);
-            this.gunaLabel1.ForeColor = System.Drawing.Color.White;
-            this.gunaLabel1.Location = new System.Drawing.Point(6, 19);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(163, 25);
-            this.gunaLabel1.TabIndex = 0;
-            this.gunaLabel1.Text = "COVID DATABÁZA";
-            // 
-            // guna2Panel_top
-            // 
-            this.guna2Panel_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(152)))), ((int)(((byte)(207)))));
-            this.guna2Panel_top.Controls.Add(this.label1_val);
-            this.guna2Panel_top.Controls.Add(this.guna2PictureBox_val);
-            this.guna2Panel_top.Controls.Add(this.guna2ControlBox3);
-            this.guna2Panel_top.Controls.Add(this.guna2ControlBox2);
-            this.guna2Panel_top.Controls.Add(this.guna2ControlBox1);
-            this.guna2Panel_top.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel_top.Location = new System.Drawing.Point(180, 0);
-            this.guna2Panel_top.Name = "guna2Panel_top";
-            this.guna2Panel_top.ShadowDecoration.Parent = this.guna2Panel_top;
-            this.guna2Panel_top.Size = new System.Drawing.Size(780, 59);
-            this.guna2Panel_top.TabIndex = 1;
-            this.guna2Panel_top.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel_top_Paint);
-            // 
-            // label1_val
-            // 
-            this.label1_val.AutoSize = true;
-            this.label1_val.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1_val.Location = new System.Drawing.Point(68, 19);
-            this.label1_val.Name = "label1_val";
-            this.label1_val.Size = new System.Drawing.Size(0, 21);
-            this.label1_val.TabIndex = 4;
-            // 
-            // guna2PictureBox_val
-            // 
-            this.guna2PictureBox_val.Location = new System.Drawing.Point(26, 12);
-            this.guna2PictureBox_val.Name = "guna2PictureBox_val";
-            this.guna2PictureBox_val.ShadowDecoration.Parent = this.guna2PictureBox_val;
-            this.guna2PictureBox_val.Size = new System.Drawing.Size(36, 34);
-            this.guna2PictureBox_val.TabIndex = 3;
-            this.guna2PictureBox_val.TabStop = false;
-            // 
-            // guna2ControlBox3
-            // 
-            this.guna2ControlBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
-            this.guna2ControlBox3.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox3.HoverState.Parent = this.guna2ControlBox3;
-            this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(681, 3);
-            this.guna2ControlBox3.Name = "guna2ControlBox3";
-            this.guna2ControlBox3.ShadowDecoration.Parent = this.guna2ControlBox3;
-            this.guna2ControlBox3.Size = new System.Drawing.Size(45, 29);
-            this.guna2ControlBox3.TabIndex = 2;
-            // 
-            // guna2ControlBox2
-            // 
-            this.guna2ControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
-            this.guna2ControlBox2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox2.HoverState.Parent = this.guna2ControlBox2;
-            this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(630, 3);
-            this.guna2ControlBox2.Name = "guna2ControlBox2";
-            this.guna2ControlBox2.ShadowDecoration.Parent = this.guna2ControlBox2;
-            this.guna2ControlBox2.Size = new System.Drawing.Size(45, 29);
-            this.guna2ControlBox2.TabIndex = 1;
-            // 
-            // guna2ControlBox1
-            // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.HoverState.Parent = this.guna2ControlBox1;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(732, 3);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.ShadowDecoration.Parent = this.guna2ControlBox1;
-            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
-            this.guna2ControlBox1.TabIndex = 0;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.TargetControl = this.guna2Panel_top;
-            // 
-            // guna2Panel_container
-            // 
-            this.guna2Panel_container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(8)))), ((int)(((byte)(30)))));
-            this.guna2Panel_container.Controls.Add(this.gunaTransfarantPictureBox1);
-            this.guna2Panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel_container.Location = new System.Drawing.Point(180, 59);
-            this.guna2Panel_container.Name = "guna2Panel_container";
-            this.guna2Panel_container.ShadowDecoration.Parent = this.guna2Panel_container;
-            this.guna2Panel_container.Size = new System.Drawing.Size(780, 561);
-            this.guna2Panel_container.TabIndex = 2;
-            // 
-            // gunaTransfarantPictureBox1
-            // 
-            this.gunaTransfarantPictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaTransfarantPictureBox1.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaTransfarantPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("gunaTransfarantPictureBox1.Image")));
-            this.gunaTransfarantPictureBox1.Location = new System.Drawing.Point(138, 75);
-            this.gunaTransfarantPictureBox1.Name = "gunaTransfarantPictureBox1";
-            this.gunaTransfarantPictureBox1.Size = new System.Drawing.Size(501, 321);
-            this.gunaTransfarantPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.gunaTransfarantPictureBox1.TabIndex = 0;
-            this.gunaTransfarantPictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(209)))), ((int)(((byte)(218)))));
-            this.label1.Location = new System.Drawing.Point(8, 482);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 25);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "počet testovanych";
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,9 +400,9 @@ namespace Covid.Views
             this.gunaPanel2.PerformLayout();
             this.guna2Panel_top.ResumeLayout(false);
             this.guna2Panel_top.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox_val)).EndInit();
             this.guna2Panel_container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gunaTransfarantPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox_val)).EndInit();
             this.ResumeLayout(false);
 
         }

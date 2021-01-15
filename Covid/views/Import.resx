@@ -117,38 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Editacia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="guna2TextBox1.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAWZJREFUWEft
-        lcsuBEEUQNvaY0csJR5bhCUWHl+F/2D8AUs2FoRfIB6/QJAIe86pTCUyycykqlpb6JOc9FR11b1dz6la
-        amIHj/ARP7s+YAe38ddYwGv8GuIVzmOtbOAbmuAJd3EJR7su4x76zjavuI614Mhj8mMcx374zjbxI+aw
-        mDjtBh6xYgi2OUH7XFpRghvOQE7toJH3Ytu4HFtW5OJuN4hrnop7wr6HoZSJR80gi6GUhpvUvh7RbD7Q
-        IGOhlIZ97GuMbLxkDJKy/pEJtO97KGVSxxLch1ImXq8GcUOlso/2PQilTNbQIKnH0Ol/RvtuWlHCORoo
-        5yK6sKKUVTSYGtjR9cN3MfkLzmIRU3iL8QPU5XBP+AfkUVN/u+Zx2k3u8hXxM7nPFYzLMUinvdaR+7Qc
-        cWRerx4v7wkvmjt0txdvOJnEGzS51+g0NkabvE3eaHI5RZP3HrXGmMEz/JPkLf+NqvoGAot/NoCkPQwA
-        AAAASUVORK5CYII=
-</value>
-  </data>
 </root>
