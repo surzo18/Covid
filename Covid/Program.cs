@@ -19,6 +19,7 @@ namespace Covid
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login_Page());
+            //Application.Run(new Import()); // rychlejsie nasmerovanie na okno pre debugovanie
         }
     }
 }

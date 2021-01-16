@@ -42,16 +42,18 @@ namespace Covid
 
             if(CSVPath != "")
             { 
-                CSVReader(CSVPath, ref zaznamCSV);
-
-                Console.WriteLine("VYPIS DAT Z CSV:");
-                foreach (var i in zaznamCSV)
-                {
-                    foreach (var j in i)
-                        Console.Write(j);
-                    Console.WriteLine("");
+                if(CSVReader(CSVPath, 3, ref zaznamCSV) > 0)
+                { 
+                    Console.WriteLine("VYPIS DAT Z CSV:");
+                    foreach (var i in zaznamCSV)
+                    {
+                        foreach (var j in i)
+                            Console.Write(j + " ");
+                        Console.WriteLine("");
+                    }
                 }
 
+                /*
                 SQLiteWriter(db, "company", zaznamCSV);
 
                 SQLiteReader(db, "company", ref zaznamSQL);
@@ -63,11 +65,11 @@ namespace Covid
                         Console.Write(j);
                     Console.WriteLine("");
                 }
-
+                */
             }
         }
 
-        void CSVReader(string filePath, ref List<List<string>> zaznam)
+        int CSVReader(string filePath, int count, ref List<List<string>> zaznam)
         {
             try
             {
@@ -78,20 +80,38 @@ namespace Covid
                         string riadok = reader.ReadLine();
                         var dataZRiadku = riadok.Split(';');
 
-                        List<string> tmp = new List<string>();
-                        foreach (string i in dataZRiadku)
-                        {
-                            tmp.Add(i);
+                        if (dataZRiadku.Length != count) // test ci je spravny pocet udajov v zazname
+                        { 
+                            MessageBox.Show($"Niektorý záznam obsahuje nesprávny počet polí ({count})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Console.WriteLine("ERROR - wrong number of records!");
+                            return -1;
                         }
+
+                        try // test ci ID udaj je cislo
+                        { 
+                            int.Parse(dataZRiadku[0]);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Niektorý záznam neobsahuje číselný údaj v číselnom poli!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Console.WriteLine(ex.ToString());
+                            return -2;
+                        }
+
+                        List<string> tmp = new List<string>(); // pridanie udajov do zaznamu
+                        for(int i=0;i<count;i++)
+                            tmp.Add(dataZRiadku[i]);
                         zaznam.Add(tmp);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR", "Chyba pri čítaní zo súboru CSV!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Neočakávaná chyba pri čítaní zo súboru CSV!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.ToString());
+                return -3;
             }
+            return 1;
         }
 
         void SQLiteWriter(Connection db, string table, List<List<string>> zaznam)
