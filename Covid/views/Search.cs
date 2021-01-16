@@ -98,7 +98,7 @@ namespace Covid
                 SQLiteDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    Console.WriteLine(rdr["Name"].ToString());
+                   /* Console.WriteLine(rdr["Name"].ToString());
                     Person newPerson = new Person(rdr["School_id"].ToString(),
                         rdr["Role_id"].ToString(),
                         rdr["Name"].ToString(),
@@ -110,7 +110,7 @@ namespace Covid
                         rdr["Age"].ToString(),
                         rdr["Birth_date"].ToString(),
                         rdr["Year_letter"].ToString());
-                    this.personResults.Append(newPerson);
+                    this.personResults.Append(newPerson);*/
                 }
                 conn.Close();
             };
