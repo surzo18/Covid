@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="Models\Queries.cs" />
+    <Compile Include="CustomQueries.cs" />
     <Compile Include="Views\Fronta.cs">
       <SubType>Form</SubType>
     </Compile>

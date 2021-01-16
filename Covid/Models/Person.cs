@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +22,11 @@ namespace Covid.Models
         private string mail { get; set; }
         private int age { get; set; }
         private string birth_date { get; set; }
+
+        public Person(int school_id, int role_id, string name, string surname, int study_year, string id_number, string address, string phone, string email, int age, string birth_date, string year_letter)
+        {
+
+        }
+
     }
 }

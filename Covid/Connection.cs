@@ -24,7 +24,7 @@ namespace Covid
             {
                 this.conn = new SQLiteConnection(this.sqlLiteDatabaseName);
             }
-            catch(SQLiteException ex)
+            catch (SQLiteException ex)
             {
                 Console.WriteLine(ex.ToString());
             }
@@ -32,10 +32,9 @@ namespace Covid
             {
                 Console.WriteLine("Pripojeny");
             }
-
-
         }
 
+ 
 
         /*
                 conn.Open();
@@ -49,11 +48,6 @@ namespace Covid
                 Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetInt32(2)}");
             }
         */
-
-
-
-
-
 
     }
 
