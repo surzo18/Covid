@@ -47,7 +47,7 @@ namespace Covid
             }
         */
 
-        // dbbrowser for sql lite
+        // dbbrowser for sql lite 2
     }
 
 }
