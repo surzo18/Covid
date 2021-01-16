@@ -46,6 +46,8 @@ namespace Covid
                 Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetInt32(2)}");
             }
         */
+
+        // hack time :p
     }
 
 }
