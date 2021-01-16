@@ -72,7 +72,6 @@ namespace Covid
                     j++;
                 }
                 guna2DataGridView1.Rows[i].Cells[j].Value = "Pridaj";
-                guna2DataGridView1.Rows[i].Cells[++j].Value = "Možnosti";
             }
         }
 
@@ -98,19 +97,6 @@ namespace Covid
                 SQLiteDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    Console.WriteLine(rdr["Name"].ToString());
-                    Person newPerson = new Person(rdr["School_id"].ToString(),
-                        rdr["Role_id"].ToString(),
-                        rdr["Name"].ToString(),
-                        rdr["Surname"].ToString(),
-                        rdr["Study_Year"].ToString(),
-                        rdr["Identification_number"].ToString(),
-                        rdr["Address"].ToString(),
-                        rdr["Email"].ToString(),
-                        rdr["Age"].ToString(),
-                        rdr["Birth_date"].ToString(),
-                        rdr["Year_letter"].ToString());
-                    this.personResults.Append(newPerson);
                 }
                 conn.Close();
             };
@@ -120,7 +106,7 @@ namespace Covid
 
         private void gunaTextBox1_TextChanged(object sender, EventArgs e)
         {
-            this.parseInputFromSearch(gunaTextBox1.Text);
+            this.parseInputFromSearch(guna2TextBox1.Text);
             this.loadDataForGridFromDb();
 
         }
