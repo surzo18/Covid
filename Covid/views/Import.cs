@@ -21,42 +21,57 @@ namespace Covid
 
         private void g2b_import_Click(object sender, EventArgs e)
         {
+            string CSVPath = "";
+
+            var oknoVyhladavania = new System.Windows.Forms.OpenFileDialog();
+            oknoVyhladavania.Title = "Výber databázy údajov";
+            oknoVyhladavania.InitialDirectory = @"c:\";
+            oknoVyhladavania.Filter = "CSV (*.csv)|*.csv";
+            oknoVyhladavania.FilterIndex = 2;
+            oknoVyhladavania.RestoreDirectory = true;
+            if (oknoVyhladavania.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                CSVPath = oknoVyhladavania.FileName;
+
+
+
+
             Connection db = new Connection();
             
             List<List<string>> zaznamCSV =new List<List<string>>();
             List<List<string>> zaznamSQL = new List<List<string>>();
 
+            if(CSVPath != "")
+            { 
+                CSVReader(CSVPath, ref zaznamCSV);
 
-            CSVReader("\\data\\skoly.csv", ref zaznamCSV);
+                Console.WriteLine("VYPIS DAT Z CSV:");
+                foreach (var i in zaznamCSV)
+                {
+                    foreach (var j in i)
+                        Console.Write(j);
+                    Console.WriteLine("");
+                }
 
-            Console.WriteLine("VYPIS DAT Z CSV:");
-            foreach (var i in zaznamCSV)
-            {
-                foreach (var j in i)
-                    Console.Write(j);
-                Console.WriteLine("");
+                SQLiteWriter(db, "company", zaznamCSV);
+
+                SQLiteReader(db, "company", ref zaznamSQL);
+
+                Console.WriteLine("VYPIS DAT ZO SQL:");
+                foreach (var i in zaznamSQL)
+                {
+                    foreach (var j in i)
+                        Console.Write(j);
+                    Console.WriteLine("");
+                }
+
             }
-
-            SQLiteWriter(db, "company", zaznamCSV);
-
-            SQLiteReader(db, "company", ref zaznamSQL);
-
-            Console.WriteLine("VYPIS DAT ZO SQL:");
-            foreach (var i in zaznamSQL)
-            {
-                foreach (var j in i)
-                    Console.Write(j);
-                Console.WriteLine("");
-            }
-
-
         }
 
         void CSVReader(string filePath, ref List<List<string>> zaznam)
         {
             try
             {
-                using (var reader = new StreamReader(Environment.CurrentDirectory + filePath))
+                using (var reader = new StreamReader(filePath))
                 {
                     while (!reader.EndOfStream)
                     {
@@ -89,14 +104,17 @@ namespace Covid
             {
                 foreach (var i in zaznam)
                 {
-                    cmd.CommandText = "INSERT INTO company(Id, Name, Address) VALUES(@id, @name, @address)";
-                    cmd.Parameters.AddWithValue("@id", i[0]);
-                    cmd.Parameters.AddWithValue("@name", i[1]);
-                    cmd.Parameters.AddWithValue("@address", i[2]);
-                    cmd.Prepare();
-                    cmd.ExecuteNonQuery();
-
-                    // POZOR NIE JE OSETRENIE PRIDAVANIE ZAZNAMU S ROVNAKYM ID!!!!
+                    try
+                    {
+                        cmd.CommandText = "INSERT INTO company(Id, Name, Address) VALUES(@id, @name, @address)";
+                        cmd.Parameters.AddWithValue("@id", i[0]);
+                        cmd.Parameters.AddWithValue("@name", i[1]);
+                        cmd.Parameters.AddWithValue("@address", i[2]);
+                        cmd.Prepare();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex){MessageBox.Show("ERROR", "ROVNAKE ID V DATABAZE"); }
+                    // POZOR NIE JE OSETRENIE PRIDAVANIE ZAZNAMU S ROVNAKYM ID, ZATIAL LEN TAKTO CEZ TRY---
                 }
             }
 
@@ -109,7 +127,7 @@ namespace Covid
             
             if (table == "company")
             {
-                string stm = "SELECT * FROM company LIMIT 5";
+                string stm = "SELECT * FROM company LIMIT 500"; // TENTO LIMIT TREBA ZVAZIT!
                 SQLiteCommand cmd = new SQLiteCommand(stm, db.conn);
                 SQLiteDataReader rdr = cmd.ExecuteReader();
 
