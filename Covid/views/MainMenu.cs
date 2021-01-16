@@ -59,5 +59,7 @@ namespace Covid.Views
             guna2PictureBox_val.Image = Properties.Resources.icons8_upload_to_the_cloud_32;
             container(new Export());
         }
+
+       
     }
 }
