@@ -25,7 +25,7 @@ namespace Covid.Views
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             MainMenu _load = new MainMenu();
-            _load.Show();
+            this.Hide(); _load.Show();
         }
     }
 }
