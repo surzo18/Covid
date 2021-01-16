@@ -47,7 +47,7 @@ namespace Covid
             }
         */
 
-        // hack time :p
+        // dbbrowser for sql lite
     }
 
 }
