@@ -29,9 +29,9 @@ namespace Covid
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search));
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,33 +41,33 @@ namespace Covid
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editacia = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.gunaCircleButton1 = new Guna.UI.WinForms.GunaCircleButton();
+            this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
-            this.gunaShadowPanel1.SuspendLayout();
             this.gunaGroupBox1.SuspendLayout();
+            this.gunaShadowPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2DataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.guna2DataGridView1.ColumnHeadersHeight = 40;
             this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -77,14 +77,14 @@ namespace Covid
             this.Column5,
             this.Column6,
             this.Editacia});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(20, 116);
@@ -183,22 +183,6 @@ namespace Covid
             this.Editacia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Editacia.Visible = false;
             // 
-            // gunaShadowPanel1
-            // 
-            this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaShadowPanel1.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaShadowPanel1.Controls.Add(this.gunaGroupBox1);
-            this.gunaShadowPanel1.Location = new System.Drawing.Point(16, 21);
-            this.gunaShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.gunaShadowPanel1.Name = "gunaShadowPanel1";
-            this.gunaShadowPanel1.Padding = new System.Windows.Forms.Padding(3, 1, 3, 2);
-            this.gunaShadowPanel1.Radius = 16;
-            this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.gunaShadowPanel1.ShadowDepth = 40;
-            this.gunaShadowPanel1.ShadowShift = 3;
-            this.gunaShadowPanel1.Size = new System.Drawing.Size(756, 53);
-            this.gunaShadowPanel1.TabIndex = 2;
-            // 
             // gunaGroupBox1
             // 
             this.gunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
@@ -273,17 +257,32 @@ namespace Covid
             this.gunaCircleButton1.TabIndex = 3;
             this.gunaCircleButton1.Click += new System.EventHandler(this.gunaCircleButton1_Click);
             // 
+            // gunaShadowPanel1
+            // 
+            this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.gunaShadowPanel1.BaseColor = System.Drawing.Color.Transparent;
+            this.gunaShadowPanel1.Controls.Add(this.gunaGroupBox1);
+            this.gunaShadowPanel1.Location = new System.Drawing.Point(16, 21);
+            this.gunaShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.gunaShadowPanel1.Name = "gunaShadowPanel1";
+            this.gunaShadowPanel1.Padding = new System.Windows.Forms.Padding(3, 1, 3, 2);
+            this.gunaShadowPanel1.Radius = 16;
+            this.gunaShadowPanel1.ShadowColor = System.Drawing.Color.Black;
+            this.gunaShadowPanel1.ShadowDepth = 40;
+            this.gunaShadowPanel1.ShadowShift = 3;
+            this.gunaShadowPanel1.Size = new System.Drawing.Size(756, 53);
+            this.gunaShadowPanel1.TabIndex = 2;
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(905, 91);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox1.Location = new System.Drawing.Point(646, 90);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(61, 17);
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
             this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Úprava";
+            this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
             // Search
             // 
@@ -300,8 +299,8 @@ namespace Covid
             this.Text = "Search";
             this.Load += new System.EventHandler(this.Search_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
-            this.gunaShadowPanel1.ResumeLayout(false);
             this.gunaGroupBox1.ResumeLayout(false);
+            this.gunaShadowPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,11 +308,6 @@ namespace Covid
 
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private Guna.UI.WinForms.GunaShadowPanel gunaShadowPanel1;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
-        private Guna.UI.WinForms.GunaCircleButton gunaCircleButton1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -321,5 +315,10 @@ namespace Covid
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
         private System.Windows.Forms.DataGridViewComboBoxColumn Editacia;
+        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI.WinForms.GunaCircleButton gunaCircleButton1;
+        private Guna.UI.WinForms.GunaShadowPanel gunaShadowPanel1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

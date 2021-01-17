@@ -91,7 +91,6 @@ namespace Covid
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.guna2DataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.guna2DataGridView1.RowHeadersVisible = false;
-            this.guna2DataGridView1.RowTemplate.ReadOnly = true;
             this.guna2DataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.guna2DataGridView1.Size = new System.Drawing.Size(750, 530);
@@ -164,7 +163,6 @@ namespace Covid
             "Pozitívny",
             "Negatívny"});
             this.MoznostiNP.Name = "MoznostiNP";
-            this.MoznostiNP.ReadOnly = true;
             this.MoznostiNP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Potvrdenie

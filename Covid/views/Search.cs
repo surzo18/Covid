@@ -23,6 +23,7 @@ namespace Covid
         {
             InitializeComponent();
             this.personResults = new List<Person>();
+            guna2DataGridView1.AllowUserToAddRows = false;
         }
        
         private void Search_Load(object sender, EventArgs e)
@@ -153,7 +154,15 @@ namespace Covid
         }
       
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void guna2TextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                gunaCircleButton1_Click(this, new EventArgs());
+            }
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
@@ -164,14 +173,5 @@ namespace Covid
                 guna2DataGridView1.Columns[6].Visible = false;
             }
         }
-
-        private void guna2TextBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                gunaCircleButton1_Click(this, new EventArgs());
-            }
-        }
-
     }
 }

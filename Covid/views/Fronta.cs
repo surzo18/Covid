@@ -20,6 +20,7 @@ namespace Covid
         public Fronta()
         {
             InitializeComponent();
+
         }
 
         public static void SendToFront(Person p)
