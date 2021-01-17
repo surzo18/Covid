@@ -63,6 +63,12 @@ namespace Covid.Views
         private void guna2ControlBox1_Click(object sender, EventArgs e)
         {
             this.Close();
+            Application.Exit();
+        }
+
+        private void gunaAdvenceButton5_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
