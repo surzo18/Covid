@@ -18,10 +18,9 @@ namespace Covid
         {
             InitializeComponent();
             
-            // TODO: docasne pre tetovanie pridavania
-            Fronta.SendToFront(new Person(1, 1, 1, "Jano", "Dudy", 1, "H9", "m", "09", "@", 19, "1999", "II.A"));
-            Fronta.SendToFront(new Person(2, 1, 1, "Peto", "Tvrdy", 1, "E8", "m", "04", "@", 20, "1998", "III.S"));
-
+            // TODO: docasne pre tetovanie pridavania do fronty, .... casom zmazat....
+            Fronta.SendToFront(new Person(10, 1, 1, "Jano", "Dudy", 2, "H9", "nabrezna", "0944", "a@a.a", 40, "1938", "II.A"));
+            Fronta.SendToFront(new Person(20, 1, 1, "Emil", "Virdzo", 3, "E8", "hurbanka", "0918", "ss@ss.ss", 80, "1914", "III.S"));
         }
     }
 }

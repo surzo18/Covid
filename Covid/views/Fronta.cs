@@ -90,22 +90,12 @@ namespace Covid
             db.conn.Open();
             SQLiteCommand cmd = new SQLiteCommand(db.conn);
 
-            // ZISKANIE ID POSLEDNEHO ZAZNAMU TESTIINGU, PRE POTREBY PRIDANIA NOVEHO S INYM ID
-            int posledneID = 0;
-            string stm = "SELECT * FROM testing LIMIT 10000"; // TODO: prediskutovat limit zaznamov (10000)
-            SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
-            SQLiteDataReader rdr = tmpCmd.ExecuteReader();
-            while (rdr.Read())
-                posledneID = rdr.GetInt32(0);
-
             // ZAPIS DO DATABAZY
             try
             {
-                cmd.CommandText = "INSERT INTO testing(Id, User_id, Testing_date, Round, Is_negative) VALUES(@id, @user_id, @testing_date, @round, @is_negative)";
-                cmd.Parameters.AddWithValue("@id", ++posledneID);
+                cmd.CommandText = "INSERT INTO testing(User_id, Testing_date, Is_negative) VALUES(@user_id, @testing_date, @is_negative)";
                 cmd.Parameters.AddWithValue("@user_id", p.id);
-                cmd.Parameters.AddWithValue("@testing_date", Views.Login_Page.datum.Day + "." + Views.Login_Page.datum.Month + "." + Views.Login_Page.datum.Year);
-                cmd.Parameters.AddWithValue("@round", 1); // TODO: kolo testovania je natvrdo zatial len 1!!
+                cmd.Parameters.AddWithValue("@testing_date", Views.Login_Page.datum);
                 cmd.Parameters.AddWithValue("@is_negative", status);
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();

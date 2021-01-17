@@ -32,7 +32,7 @@ namespace Covid.Views
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pocetLudi = new System.Windows.Forms.Label();
             this.gunaAdvenceButton5 = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaAdvenceButton4 = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaAdvenceButton3 = new Guna.UI.WinForms.GunaAdvenceButton();
@@ -60,7 +60,7 @@ namespace Covid.Views
             // gunaPanel1
             // 
             this.gunaPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(92)))));
-            this.gunaPanel1.Controls.Add(this.label1);
+            this.gunaPanel1.Controls.Add(this.pocetLudi);
             this.gunaPanel1.Controls.Add(this.gunaAdvenceButton5);
             this.gunaPanel1.Controls.Add(this.gunaAdvenceButton4);
             this.gunaPanel1.Controls.Add(this.gunaAdvenceButton3);
@@ -73,16 +73,17 @@ namespace Covid.Views
             this.gunaPanel1.Size = new System.Drawing.Size(180, 620);
             this.gunaPanel1.TabIndex = 0;
             // 
-            // label1
+            // pocetLudi
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(209)))), ((int)(((byte)(218)))));
-            this.label1.Location = new System.Drawing.Point(8, 482);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 25);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "počet testovanych";
+            this.pocetLudi.AutoSize = true;
+            this.pocetLudi.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.pocetLudi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(209)))), ((int)(((byte)(218)))));
+            this.pocetLudi.Location = new System.Drawing.Point(8, 445);
+            this.pocetLudi.Name = "pocetLudi";
+            this.pocetLudi.Size = new System.Drawing.Size(169, 25);
+            this.pocetLudi.TabIndex = 6;
+            this.pocetLudi.Text = "počet testovanych";
+            this.pocetLudi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gunaAdvenceButton5
             // 
@@ -427,6 +428,6 @@ namespace Covid.Views
         private Guna.UI.WinForms.GunaTransfarantPictureBox gunaTransfarantPictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox_val;
         private System.Windows.Forms.Label label1_val;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label pocetLudi;
     }
 }

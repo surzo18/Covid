@@ -12,11 +12,12 @@ namespace Covid.Views
 {
     public partial class Login_Page : Form
     {
-        public static DateTime datum = new DateTime(2021, 01, 18); // datum prihlasenia sa
+        public static string datum;
 
         public Login_Page()
         {
             InitializeComponent();
+            datum = DateTime.Now.Day.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Year.ToString();
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -28,6 +29,15 @@ namespace Covid.Views
         {
             MainMenu _load = new MainMenu();
             this.Hide(); _load.Show();
+        }
+
+        private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            var DTPicker = guna2DateTimePicker1.Value;
+            if (DTPicker == null) 
+                return;
+            else
+                datum = DTPicker.Day.ToString() + "." + DTPicker.Month.ToString() + "." + DTPicker.Year.ToString();
         }
     }
 }

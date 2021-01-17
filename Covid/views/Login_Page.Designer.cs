@@ -162,6 +162,7 @@ namespace Covid.Views
             this.guna2DateTimePicker1.Size = new System.Drawing.Size(205, 35);
             this.guna2DateTimePicker1.TabIndex = 7;
             this.guna2DateTimePicker1.Value = new System.DateTime(2021, 1, 15, 7, 56, 24, 539);
+            this.guna2DateTimePicker1.ValueChanged += new System.EventHandler(this.guna2DateTimePicker1_ValueChanged);
             // 
             // gunaPictureBox1
             // 
