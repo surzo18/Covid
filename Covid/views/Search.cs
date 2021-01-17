@@ -97,6 +97,8 @@ namespace Covid
                 SQLiteDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
+                    Console.WriteLine(rdr["Name"].ToString());
+                  
                 }
                 conn.Close();
             };
