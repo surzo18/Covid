@@ -123,10 +123,12 @@ namespace Covid
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Person clickedOne = this.personResults[e.RowIndex];
-            MessageBox.Show(clickedOne.surname);
-            
+           // MessageBox.Show(clickedOne.surname);
+            Fronta.SendToFront(clickedOne);
+
+
         }
-      
+
 
         private void guna2TextBox1_KeyDown(object sender, KeyEventArgs e)
         {
