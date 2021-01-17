@@ -34,11 +34,6 @@ namespace Covid
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search));
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
-            this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.gunaCircleButton1 = new Guna.UI.WinForms.GunaCircleButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +41,11 @@ namespace Covid
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editacia = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gunaShadowPanel1 = new Guna.UI.WinForms.GunaShadowPanel();
+            this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.gunaCircleButton1 = new Guna.UI.WinForms.GunaCircleButton();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.gunaShadowPanel1.SuspendLayout();
             this.gunaGroupBox1.SuspendLayout();
@@ -121,6 +121,68 @@ namespace Covid
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 44.51215F;
+            this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 87.37447F;
+            this.Column2.HeaderText = "Meno,Priezvisko";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 49.4315F;
+            this.Column3.HeaderText = "Škola";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 87.37447F;
+            this.Column4.HeaderText = "Rodné čislo";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.FillWeight = 45.14417F;
+            this.Column5.HeaderText = "Trieda";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.FillWeight = 72.28632F;
+            this.Column6.HeaderText = "Do fronty";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.Text = "";
+            // 
+            // Editacia
+            // 
+            this.Editacia.FillWeight = 58.54702F;
+            this.Editacia.HeaderText = "Editacia";
+            this.Editacia.Items.AddRange(new object[] {
+            "Potizivný",
+            "Negativný",
+            "Nezučastnil sa"});
+            this.Editacia.MinimumWidth = 6;
+            this.Editacia.Name = "Editacia";
+            this.Editacia.ReadOnly = true;
+            this.Editacia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editacia.Visible = false;
+            // 
             // gunaShadowPanel1
             // 
             this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
@@ -147,7 +209,7 @@ namespace Covid
             this.gunaGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox1.LineColor = System.Drawing.Color.Gainsboro;
             this.gunaGroupBox1.LineTop = 0;
-            this.gunaGroupBox1.Location = new System.Drawing.Point(4, 1);
+            this.gunaGroupBox1.Location = new System.Drawing.Point(3, 1);
             this.gunaGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.gunaGroupBox1.Name = "gunaGroupBox1";
             this.gunaGroupBox1.Radius = 26;
@@ -222,63 +284,6 @@ namespace Covid
             this.checkBox1.Text = "Úprava";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 44.51215F;
-            this.Column1.HeaderText = "ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 87.37447F;
-            this.Column2.HeaderText = "Meno,Priezvisko";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 49.4315F;
-            this.Column3.HeaderText = "Škola";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 87.37447F;
-            this.Column4.HeaderText = "Rodné čislo";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 45.14417F;
-            this.Column5.HeaderText = "Trieda";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 72.28632F;
-            this.Column6.HeaderText = "Do fronty";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column6.Text = "";
-            // 
-            // Editacia
-            // 
-            this.Editacia.FillWeight = 58.54702F;
-            this.Editacia.HeaderText = "Editacia";
-            this.Editacia.Items.AddRange(new object[] {
-            "Potizivný",
-            "Negativný",
-            "Nezučastnil sa"});
-            this.Editacia.MinimumWidth = 6;
-            this.Editacia.Name = "Editacia";
-            this.Editacia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editacia.Visible = false;
             // 
             // Search
             // 

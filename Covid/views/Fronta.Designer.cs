@@ -32,6 +32,7 @@ namespace Covid
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,7 +83,16 @@ namespace Covid
             this.guna2DataGridView1.Location = new System.Drawing.Point(15, 15);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.guna2DataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.guna2DataGridView1.RowHeadersVisible = false;
+            this.guna2DataGridView1.RowTemplate.ReadOnly = true;
+            this.guna2DataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.guna2DataGridView1.Size = new System.Drawing.Size(750, 530);
             this.guna2DataGridView1.TabIndex = 3;
@@ -115,30 +125,35 @@ namespace Covid
             this.Column1.FillWeight = 44.51215F;
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.FillWeight = 87.37447F;
             this.Column2.HeaderText = "Meno,Priezvisko";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.FillWeight = 49.4315F;
             this.Column3.HeaderText = "Škola";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.FillWeight = 87.37447F;
             this.Column4.HeaderText = "Rodné čislo";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.FillWeight = 45.14417F;
             this.Column5.HeaderText = "Trieda";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // MoznostiNP
             // 
@@ -149,6 +164,7 @@ namespace Covid
             "Pozitívny",
             "Negatívny"});
             this.MoznostiNP.Name = "MoznostiNP";
+            this.MoznostiNP.ReadOnly = true;
             this.MoznostiNP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Potvrdenie
@@ -156,6 +172,7 @@ namespace Covid
             this.Potvrdenie.FillWeight = 58.54702F;
             this.Potvrdenie.HeaderText = "Potvrdenie";
             this.Potvrdenie.Name = "Potvrdenie";
+            this.Potvrdenie.ReadOnly = true;
             // 
             // Fronta
             // 
