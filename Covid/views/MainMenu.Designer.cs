@@ -119,6 +119,7 @@ namespace Covid.Views
             this.gunaAdvenceButton5.Size = new System.Drawing.Size(180, 50);
             this.gunaAdvenceButton5.TabIndex = 5;
             this.gunaAdvenceButton5.Text = "Odhlasenie";
+            this.gunaAdvenceButton5.Click += new System.EventHandler(this.gunaAdvenceButton5_Click);
             // 
             // gunaAdvenceButton4
             // 

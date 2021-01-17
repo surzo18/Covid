@@ -9,12 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Covid.Models;
 
 namespace Covid
 {
     public partial class Import : Form
     {
-
         List<string[]> schools = new List<string[]>(); // list o skolach...
         int posledneID;
 
