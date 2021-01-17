@@ -89,28 +89,54 @@ namespace Covid
 
         private void loadDataForGridFromDb()
         {
+            //Pripojenie do db
             using(SQLiteConnection conn = new Connection().conn)
             {
+                conn.Open();
                 string stm = new CustomQueries().GetUsersByName(this.searchedName, this.searchedSurname);
 
                 SQLiteCommand cmd = new SQLiteCommand(stm, conn);
                 SQLiteDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    Console.WriteLine(rdr["Name"].ToString());
-                  
+                    this.personResults.Add(new Person(
+                        (int)rdr["Id"],
+                        (int)rdr["School_id"],
+                        (int)rdr["Role_id"],
+                        (string)rdr["Name"],
+                        (string)rdr["Surname"],
+                        (int)rdr["Study_year"],
+                        (string)rdr["Identification_number"],
+                        (string)rdr["Address"],
+                        (string)rdr["Phone"],
+                        (string)rdr["Email"],
+                        (int)rdr["Age"],
+                        (string)rdr["Birth_date"],
+                        (string)rdr["Year_letter"]
+                        ));
                 }
                 conn.Close();
             };
-            guna2DataGridView1.Update();
-            guna2DataGridView1.Refresh();
         }
 
-        private void gunaTextBox1_TextChanged(object sender, EventArgs e)
+        private void gunaCircleButton1_Click(object sender, EventArgs e)
         {
+            //nastavi hladane na aktualnu hodnotu
             this.parseInputFromSearch(guna2TextBox1.Text);
-            this.loadDataForGridFromDb();
 
+            //Clearne grid vysledkov
+            guna2DataGridView1.Rows.Clear();
+
+            //ak je priezvisko prazdne nehladaj nič
+            if(this.searchedSurname == "")
+            {
+                return;
+            }
+
+            //Loadne nove vyhľadávané data
+            this.loadDataForGridFromDb();
+            //
         }
+
     }
 }
