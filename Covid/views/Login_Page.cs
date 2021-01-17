@@ -12,6 +12,8 @@ namespace Covid.Views
 {
     public partial class Login_Page : Form
     {
+        public static DateTime datum = new DateTime(2021, 01, 18); // datum prihlasenia sa
+
         public Login_Page()
         {
             InitializeComponent();

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,24 +15,19 @@ namespace Covid
     public partial class Fronta : Form
     {
         static List<Person> personsInFront = new List<Person>();
+        Connection db = new Connection();
+
         public Fronta()
         {
             InitializeComponent();
-            SendToFront(new Person(1, 1, 1, "Jano", "Dudy", 1, "H9", "m", "09", "@", 19, "1999", "II.A"));
-            SendToFront(new Person(2, 1, 1, "Peto", "Tvrdy", 1, "E8", "m", "04", "@", 20, "1998", "III.S"));
         }
-        
-        public void SendToFront(Person p)
+
+        public static void SendToFront(Person p)
         {
             personsInFront.Add(p);
         }
 
         private void Fronta_Load(object sender, EventArgs e)
-        {
-            ShowFront();
-        }
-
-        void ShowFront()
         {
             guna2DataGridView1.Rows.Clear();
 
@@ -46,14 +42,83 @@ namespace Covid
                     guna2DataGridView1.Rows[i].Cells[2].Value = personsInFront[i].company.name;
                     guna2DataGridView1.Rows[i].Cells[3].Value = personsInFront[i].id_number;
                     guna2DataGridView1.Rows[i].Cells[4].Value = personsInFront[i].year_letter;
+                    guna2DataGridView1.Rows[i].Cells[5].Value = "";
                     guna2DataGridView1.Rows[i].Cells[6].Value = "Potvrď";
                 }
             }
+
+            guna2DataGridView1.AllowUserToAddRows = false;
         }
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                int userStatusId = 0; // 0-neurčený 1-pozitivny 2-negativny
+                string userStatus = guna2DataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                if (userStatus == "")
+                {
+                    MessageBox.Show($"Musíte zvoliť stav Pozitívny/Negatívny", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    if (userStatus == "Pozitívny")
+                        userStatusId = 1;
+                    else if (userStatus == "Negatívny")
+                        userStatusId = 2;
 
+                    DialogResult akcept = MessageBox.Show($"Určite chcete potvrdiť užívateľa?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (akcept == DialogResult.Yes)
+                    {
+                        SQLiteWriterTesting(personsInFront[e.RowIndex], userStatusId);
+                        personsInFront.RemoveAt(e.RowIndex);
+                        guna2DataGridView1.Rows.RemoveAt(e.RowIndex);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Neočakávaná chyba pri potvrdení užívateľa!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.ToString());
+                return;
+            }
+        }
+
+        void SQLiteWriterTesting(Person p, int status)
+        {
+            db.conn.Open();
+            SQLiteCommand cmd = new SQLiteCommand(db.conn);
+
+            // ZISKANIE ID POSLEDNEHO ZAZNAMU TESTIINGU, PRE POTREBY PRIDANIA NOVEHO S INYM ID
+            int posledneID = 0;
+            string stm = "SELECT * FROM testing LIMIT 10000"; // TODO: prediskutovat limit zaznamov (10000)
+            SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
+            SQLiteDataReader rdr = tmpCmd.ExecuteReader();
+            while (rdr.Read())
+                posledneID = rdr.GetInt32(0);
+
+            // ZAPIS DO DATABAZY
+            try
+            {
+                cmd.CommandText = "INSERT INTO testing(Id, User_id, Testing_date, Round, Is_negative) VALUES(@id, @user_id, @testing_date, @round, @is_negative)";
+                cmd.Parameters.AddWithValue("@id", ++posledneID);
+                cmd.Parameters.AddWithValue("@user_id", p.id);
+                cmd.Parameters.AddWithValue("@testing_date", Views.Login_Page.datum.Day + "." + Views.Login_Page.datum.Month + "." + Views.Login_Page.datum.Year);
+                cmd.Parameters.AddWithValue("@round", 1); // TODO: kolo testovania je natvrdo zatial len 1!!
+                cmd.Parameters.AddWithValue("@is_negative", status);
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Neočakávaná chyba pri zápise do databázy!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.ToString());
+                db.conn.Close();
+                return;
+            }
+
+            db.conn.Close();
         }
     }
 }

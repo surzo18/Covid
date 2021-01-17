@@ -79,12 +79,12 @@ namespace Covid
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(29, 24);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(15, 15);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(700, 514);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(750, 530);
             this.guna2DataGridView1.TabIndex = 3;
             this.guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -146,8 +146,8 @@ namespace Covid
             this.MoznostiNP.FillWeight = 72.28632F;
             this.MoznostiNP.HeaderText = "Výber možnosti";
             this.MoznostiNP.Items.AddRange(new object[] {
-            "Pozitivný",
-            "Negativný"});
+            "Pozitívny",
+            "Negatívny"});
             this.MoznostiNP.Name = "MoznostiNP";
             this.MoznostiNP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
