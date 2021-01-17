@@ -23,9 +23,10 @@ namespace Covid.Models
         private int age { get; set; }
         private string birth_date { get; set; }
 
-        public Person(int school_id, int role_id, string name, string surname, int study_year, string id_number, string address, string phone, string email, int age, string birth_date, string year_letter)
+        public Person(int id, int school_id, int role_id, string name, string surname, int study_year, string id_number, string address, string phone, string email, int age, string birth_date, string year_letter)
         {
-
+            this.company = Company.getCompanyById(school_id);
+            this.role = UserRole.getRoleById(role_id);
         }
 
     }
