@@ -18,6 +18,7 @@ namespace Covid.Views
         {
             InitializeComponent();
             datum = DateTime.Now.Day.ToString() + "." + DateTime.Now.Month.ToString() + "." + DateTime.Now.Year.ToString();
+            guna2DateTimePicker1.Value = DateTime.Now;
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -27,21 +28,21 @@ namespace Covid.Views
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (txtUserName.Text == "coviddatabaza" && txtpassword.Text == "covid")
+            //if (txtUserName.Text == "coviddatabaza" && txtpassword.Text == "covid")
             {
                 MainMenu _load = new MainMenu(this);
                 _load.Show();
                 txtUserName.Clear();
                 txtpassword.Clear();
             }
-            else
+            /*else
             {
                 MessageBox.Show("Nespravne zadane Meno alebo heslo");
                 txtUserName.Clear();
                 txtpassword.Clear();
                 txtUserName.Focus();
-            }
-            }
+            }*/
+        }
 
 
         private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)

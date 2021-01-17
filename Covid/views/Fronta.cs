@@ -1,5 +1,4 @@
-﻿using Covid.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Covid.Models;
+using Guna.UI.WinForms;
 
 namespace Covid
 {
@@ -17,15 +18,26 @@ namespace Covid
         static List<Person> personsInFront = new List<Person>();
         Connection db = new Connection();
 
-        public Fronta()
+        static Guna.UI.WinForms.GunaAdvenceButton btnFronta;
+        static Label lblInfo;
+
+        public Fronta(object obj)
         {
             InitializeComponent();
-
+            btnFronta = (obj as Form).Controls[2].Controls[2] as Guna.UI.WinForms.GunaAdvenceButton; // fronta tlacidlo
+            lblInfo = (obj as Form).Controls[2].Controls[0] as Label; // info label
         }
 
         public static void SendToFront(Person p)
         {
+            foreach (var i in personsInFront)
+            {
+                if (p.id == i.id)
+                    return;
+            } 
+            
             personsInFront.Add(p);
+            btnFronta.Text = "Fronta (" + personsInFront.Count.ToString() + ")";
         }
 
         private void Fronta_Load(object sender, EventArgs e)
@@ -74,6 +86,12 @@ namespace Covid
                         SQLiteWriterTesting(personsInFront[e.RowIndex], userStatusId);
                         personsInFront.RemoveAt(e.RowIndex);
                         guna2DataGridView1.Rows.RemoveAt(e.RowIndex);
+
+                        btnFronta.Text = "Fronta (" + personsInFront.Count.ToString() + ")";
+                        var tmpMsg = lblInfo.Text.Split('\n'); // pripocitanie poctu otestovanych
+                        var tmpNO = tmpMsg[1].Split('/');
+                        int tmpTst = int.Parse(tmpNO[0]);
+                        lblInfo.Text = tmpMsg[0] + "\n" + (++tmpTst).ToString() + "/" + tmpNO[1];
                     }
                 }
 

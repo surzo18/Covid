@@ -16,9 +16,12 @@ namespace Covid
 {
     public partial class Import : Form
     {
-        public Import()
+        Label lblInfo;
+        public Import(object obj)
         {
             InitializeComponent();
+
+            lblInfo = (obj as Form).Controls[2].Controls[0] as Label; // info label
 
             g2b_import.Text = "Vyhľadať súbor";
         }
@@ -65,6 +68,11 @@ namespace Covid
             }
 
             g2b_import.Text = "Úspešný zápis";
+
+            var tmpMsg = lblInfo.Text.Split('\n'); // pripocitanie poctu otestovanych
+            var tmpNO = tmpMsg[1].Split('/');
+            int tmpTst = int.Parse(tmpNO[1]);
+            lblInfo.Text = tmpMsg[0] + "\n" + tmpNO[0] + "/" + (tmpTst + zaznamCSV.Count).ToString();
         }
 
         int CSVReader(string filePath, int count, ref List<List<string>> zaznam)

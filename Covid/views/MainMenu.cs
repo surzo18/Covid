@@ -14,7 +14,7 @@ namespace Covid.Views
     public partial class MainMenu : Form
     {
         Form login;
-        
+
         public MainMenu( Form login)
         {
             InitializeComponent();
@@ -81,13 +81,13 @@ namespace Covid.Views
         private void gunaAdvenceButton4_Click(object sender, EventArgs e)
         {
             guna2PictureBox_val.Image = Properties.Resources.icons8_form_32;
-            container(new Fronta());
+            container(new Fronta(this));
         }
 
         private void gunaAdvenceButton3_Click(object sender, EventArgs e)
         {
             guna2PictureBox_val.Image = Properties.Resources.icons8_download_from_the_cloud_32;
-            container(new Import());
+            container(new Import(this));
         }
 
         private void gunaAdvenceButton2_Click(object sender, EventArgs e)
