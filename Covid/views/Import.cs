@@ -22,6 +22,7 @@ namespace Covid
         {
             InitializeComponent();
             posledneID = 0;
+            g2b_import.Text = "Vyhľadať súbor";
 
             // TODO: docasne naplnenie mien skol z databazy----
             string[] a = new string[2];
@@ -50,9 +51,8 @@ namespace Covid
             oknoVyhladavania.RestoreDirectory = true;
             if (oknoVyhladavania.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 CSVPath = oknoVyhladavania.FileName;
-
-
-
+            g2b_import.Text = "Načítava sa...";
+            
             Connection db = new Connection();
             List<List<string>> zaznamCSV =new List<List<string>>();
 
@@ -72,19 +72,20 @@ namespace Covid
                 SQLiteWriter(db, "user", zaznamCSV);
             }
 
-
-                /*
-                // NACITANIE DAT Z DATABAZY
-                List<List<string>> zaznamSQL = new List<List<string>>();
-                SQLiteReader(db, "company", ref zaznamSQL);
-                Console.WriteLine("VYPIS DAT ZO SQL:");
-                foreach (var i in zaznamSQL)
-                {
-                    foreach (var j in i)
-                        Console.Write(j);
-                    Console.WriteLine("");
-                }
-                */
+            g2b_import.Text = "Úspešný zápis";
+            
+            /*
+            // NACITANIE DAT Z DATABAZY
+            List<List<string>> zaznamSQL = new List<List<string>>();
+            SQLiteReader(db, "company", ref zaznamSQL);
+            Console.WriteLine("VYPIS DAT ZO SQL:");
+            foreach (var i in zaznamSQL)
+            {
+                foreach (var j in i)
+                    Console.Write(j);
+                Console.WriteLine("");
+            }
+            */
         }
 
         int CSVReader(string filePath, int count, ref List<List<string>> zaznam)
