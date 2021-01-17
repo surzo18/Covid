@@ -23,7 +23,7 @@ namespace Covid
 
         public string GetRoleById(int id)
         {
-            return "select * from user_role where id = " + id;
+            return "select * from user_role where Id = " + id;
         }
     }
 }

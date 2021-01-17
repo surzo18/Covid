@@ -13,6 +13,10 @@ namespace Covid.Models
         public string name { get; private set; }
         public string address { get; private set; }
 
+        public Company()
+        {
+
+        }
 
         public Company(int id, string name, string address)
         {
@@ -25,14 +29,20 @@ namespace Covid.Models
         {
             using (SQLiteConnection conn = new Connection().conn)
             {
+                Company newCompany = new Company();
+
                 conn.Open();
                 string stm = new CustomQueries().GetCompanyById(id);
 
                 SQLiteCommand cmd = new SQLiteCommand(stm, conn);
                 SQLiteDataReader rdr = cmd.ExecuteReader();
-                Company tmp = new Company((int)rdr["id"], rdr["name"].ToString(), rdr["address"].ToString()); // kvoli poradiu uzatvorenia SPOJENIA a RETURNU
+                while (rdr.Read())
+                {
+                     newCompany = new Company(Convert.ToInt32(rdr["id"]), rdr["name"].ToString(), rdr["address"].ToString());
+                }
                 conn.Close();
-                return tmp;
+
+                return newCompany;
             };
         }
     }

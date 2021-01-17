@@ -87,7 +87,8 @@ namespace Covid
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(15, 94);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(20, 116);
+            this.guna2DataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guna2DataGridView1.RowHeadersVisible = false;
@@ -118,13 +119,15 @@ namespace Covid
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
             // gunaShadowPanel1
             // 
             this.gunaShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaShadowPanel1.BaseColor = System.Drawing.Color.Transparent;
             this.gunaShadowPanel1.Controls.Add(this.gunaGroupBox1);
-            this.gunaShadowPanel1.Location = new System.Drawing.Point(12, 17);
+            this.gunaShadowPanel1.Location = new System.Drawing.Point(16, 21);
+            this.gunaShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.gunaShadowPanel1.Name = "gunaShadowPanel1";
             this.gunaShadowPanel1.Padding = new System.Windows.Forms.Padding(3, 1, 3, 2);
             this.gunaShadowPanel1.Radius = 16;
@@ -144,7 +147,8 @@ namespace Covid
             this.gunaGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaGroupBox1.LineColor = System.Drawing.Color.Gainsboro;
             this.gunaGroupBox1.LineTop = 0;
-            this.gunaGroupBox1.Location = new System.Drawing.Point(3, 1);
+            this.gunaGroupBox1.Location = new System.Drawing.Point(4, 1);
+            this.gunaGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.gunaGroupBox1.Name = "gunaGroupBox1";
             this.gunaGroupBox1.Radius = 26;
             this.gunaGroupBox1.Size = new System.Drawing.Size(750, 50);
@@ -168,8 +172,8 @@ namespace Covid
             this.guna2TextBox1.FocusedState.Parent = this.guna2TextBox1;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Location = new System.Drawing.Point(52, 7);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2TextBox1.Location = new System.Drawing.Point(69, 9);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(5);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.guna2TextBox1.PasswordChar = '\0';
@@ -195,7 +199,8 @@ namespace Covid
             this.gunaCircleButton1.ForeColor = System.Drawing.Color.White;
             this.gunaCircleButton1.Image = ((System.Drawing.Image)(resources.GetObject("gunaCircleButton1.Image")));
             this.gunaCircleButton1.ImageSize = new System.Drawing.Size(16, 16);
-            this.gunaCircleButton1.Location = new System.Drawing.Point(16, 10);
+            this.gunaCircleButton1.Location = new System.Drawing.Point(21, 12);
+            this.gunaCircleButton1.Margin = new System.Windows.Forms.Padding(4);
             this.gunaCircleButton1.Name = "gunaCircleButton1";
             this.gunaCircleButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.gunaCircleButton1.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -209,7 +214,8 @@ namespace Covid
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(679, 74);
+            this.checkBox1.Location = new System.Drawing.Point(905, 91);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(61, 17);
             this.checkBox1.TabIndex = 3;
@@ -284,6 +290,7 @@ namespace Covid
             this.Controls.Add(this.gunaShadowPanel1);
             this.Controls.Add(this.guna2DataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Search";
             this.Text = "Search";
             this.Load += new System.EventHandler(this.Search_Load);

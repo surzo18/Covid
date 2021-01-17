@@ -22,10 +22,12 @@ namespace Covid
         public Search()
         {
             InitializeComponent();
+            this.personResults = new List<Person>();
         }
        
         private void Search_Load(object sender, EventArgs e)
         {
+            /*
             List<List<string>> databaza = new List<List<string>>();
             List<string> user1 = new List<string>();
             user1.Add("10."); 
@@ -74,6 +76,7 @@ namespace Covid
                 }
                 guna2DataGridView1.Rows[i].Cells[j].Value = "Pridaj";
             }
+            */
         }
 
 
@@ -100,24 +103,29 @@ namespace Covid
                 SQLiteDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    this.personResults.Add(new Person(
-                        (int)rdr["Id"],
-                        (int)rdr["School_id"],
-                        (int)rdr["Role_id"],
-                        (string)rdr["Name"],
-                        (string)rdr["Surname"],
-                        (int)rdr["Study_year"],
-                        (string)rdr["Identification_number"],
-                        (string)rdr["Address"],
-                        (string)rdr["Phone"],
-                        (string)rdr["Email"],
-                        (int)rdr["Age"],
-                        (string)rdr["Birth_date"],
-                        (string)rdr["Year_letter"]
+                    //MessageBox.Show(rdr["Id"].ToString());
+                    //Console.WriteLine(rdr["Name"]);
+
+                    int id = Convert.ToInt32(rdr["Id"]);
+                    int schoold_id = Convert.ToInt32(rdr["School_id"]);
+                    int role_id = Convert.ToInt32(rdr["Role_id"]);
+                    string name = rdr["Name"].ToString();
+                    string surname = rdr["Surname"].ToString();
+                    int study_year = Convert.ToInt32(rdr["Study_year"]);
+                    string id_number = rdr["Identification_number"].ToString();
+                    string address = rdr["Address"].ToString();
+                    string phone = rdr["Phone"].ToString();
+                    string email = rdr["Email"].ToString();
+                    int age = Convert.ToInt32(rdr["Age"]);
+                    string birth_date = rdr["Birth_date"].ToString();
+                    string year_letter = rdr["Year_letter"].ToString();
+                    this.personResults.Append(new Person(
+                        id,schoold_id,role_id,name,surname,study_year,id_number,address,phone,email,age,birth_date,year_letter
                         ));
                 }
                 conn.Close();
             };
+            
         }
 
         private void gunaCircleButton1_Click(object sender, EventArgs e)
@@ -137,6 +145,11 @@ namespace Covid
             //Loadne nove vyhľadávané data
             this.loadDataForGridFromDb();
             //
+        }
+
+        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
       
 

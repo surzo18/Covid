@@ -25,21 +25,15 @@ namespace Covid.Models
 
         public Person(int id, int school_id, int role_id, string name, string surname, int study_year, string id_number, string address, string phone, string mail, int age, string birth_date, string year_letter)
         {
-            //TODO: opravit nacitavanie company a role z databazy
-            //this.company = Company.getCompanyById(school_id);
-            //this.role = UserRole.getRoleById(role_id);
-            
-            this.company = new Company(1, "sps", "knm");
-            this.role = new UserRole(1,"ziak");
-
-            this.id = id;
+            this.company = Company.getCompanyById(school_id);
+            this.role = UserRole.getRoleById(role_id);
             this.name = name;
             this.surname = surname;
             this.study_year = study_year;
             this.id_number = id_number;
             this.address = address;
             this.phone = phone;
-            this.mail = mail;
+            this.mail = email;
             this.age = age;
             this.birth_date = birth_date;
             this.year_letter = year_letter;

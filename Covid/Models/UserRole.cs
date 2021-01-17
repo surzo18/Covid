@@ -18,22 +18,32 @@ namespace Covid.Models
             this.userRoleName = userRoleName;
         }
 
+        public UserRole()
+        {
+
+        }
+
         public static UserRole getRoleById(int id)
         {
+            UserRole newUserRole = new UserRole();
             using (SQLiteConnection conn = new Connection().conn)
             {
                 conn.Open();
-                string stm = new CustomQueries().GetCompanyById(id);
+                string stm = new CustomQueries().GetRoleById(id);
 
                 SQLiteCommand cmd = new SQLiteCommand(stm, conn);
                 SQLiteDataReader rdr = cmd.ExecuteReader();
-                UserRole tmp = new UserRole(
-                    (int)rdr["id"],
-                    rdr["name"].ToString()
-                    );
+                while(rdr.Read()){
+                    newUserRole = new UserRole(
+                        Convert.ToInt32(rdr["Id"]), 
+                        rdr["Role_Name"].ToString()
+                        );
+                }
+
                 conn.Close();
-                return tmp;
+                return newUserRole;
             };
+
         }
     }
 }
