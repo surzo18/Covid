@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Covid.Models
 {
-    class Person
+    public class Person
     {
         private int id { get; set; }
         private Company company { get; set; } //skola

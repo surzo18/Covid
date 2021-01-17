@@ -38,8 +38,8 @@ namespace Covid
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Editacia = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.MoznostiNP = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Potvrdenie = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,8 +67,8 @@ namespace Covid
             this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6,
-            this.Editacia});
+            this.MoznostiNP,
+            this.Potvrdenie});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -109,6 +109,7 @@ namespace Covid
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 22;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
             // Column1
             // 
@@ -140,22 +141,22 @@ namespace Covid
             this.Column5.HeaderText = "Trieda";
             this.Column5.Name = "Column5";
             // 
-            // Column6
+            // MoznostiNP
             // 
-            this.Column6.DataPropertyName = "Výber";
-            this.Column6.FillWeight = 72.28632F;
-            this.Column6.HeaderText = "Výber možnosti";
-            this.Column6.Items.AddRange(new object[] {
+            this.MoznostiNP.DataPropertyName = "Výber";
+            this.MoznostiNP.FillWeight = 72.28632F;
+            this.MoznostiNP.HeaderText = "Výber možnosti";
+            this.MoznostiNP.Items.AddRange(new object[] {
             "Pozitivný",
             "Negativný"});
-            this.Column6.Name = "Column6";
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MoznostiNP.Name = "MoznostiNP";
+            this.MoznostiNP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // Editacia
+            // Potvrdenie
             // 
-            this.Editacia.FillWeight = 58.54702F;
-            this.Editacia.HeaderText = "Potvrdenie";
-            this.Editacia.Name = "Editacia";
+            this.Potvrdenie.FillWeight = 58.54702F;
+            this.Potvrdenie.HeaderText = "Potvrdenie";
+            this.Potvrdenie.Name = "Potvrdenie";
             // 
             // Fronta
             // 
@@ -179,7 +180,7 @@ namespace Covid
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewButtonColumn Editacia;
+        private System.Windows.Forms.DataGridViewComboBoxColumn MoznostiNP;
+        private System.Windows.Forms.DataGridViewButtonColumn Potvrdenie;
     }
 }
