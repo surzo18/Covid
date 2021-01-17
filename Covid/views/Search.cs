@@ -72,7 +72,6 @@ namespace Covid
                     j++;
                 }
                 guna2DataGridView1.Rows[i].Cells[j].Value = "Pridaj";
-                guna2DataGridView1.Rows[i].Cells[++j].Value = "Možnosti";
             }
         }
 
@@ -120,7 +119,7 @@ namespace Covid
 
         private void gunaTextBox1_TextChanged(object sender, EventArgs e)
         {
-            this.parseInputFromSearch(gunaTextBox1.Text);
+            this.parseInputFromSearch(guna2TextBox1.Text);
             this.loadDataForGridFromDb();
 
         }

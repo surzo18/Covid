@@ -38,7 +38,7 @@ namespace Covid
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Editacia = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -142,16 +142,19 @@ namespace Covid
             // 
             // Column6
             // 
+            this.Column6.DataPropertyName = "Výber";
             this.Column6.FillWeight = 72.28632F;
-            this.Column6.HeaderText = "Pozitivný";
+            this.Column6.HeaderText = "Výber možnosti";
+            this.Column6.Items.AddRange(new object[] {
+            "Pozitivný",
+            "Negativný"});
             this.Column6.Name = "Column6";
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column6.Text = "";
             // 
             // Editacia
             // 
             this.Editacia.FillWeight = 58.54702F;
-            this.Editacia.HeaderText = "Negativny";
+            this.Editacia.HeaderText = "Potvrdenie";
             this.Editacia.Name = "Editacia";
             // 
             // Fronta
@@ -176,7 +179,7 @@ namespace Covid
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewButtonColumn Column6;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column6;
         private System.Windows.Forms.DataGridViewButtonColumn Editacia;
     }
 }

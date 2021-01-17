@@ -16,11 +16,12 @@ namespace Covid
     {
 
         List<string[]> schools = new List<string[]>(); // list o skolach...
-        int poradie;
+        int posledneID;
 
         public Import()
         {
             InitializeComponent();
+            posledneID = 0;
 
             // TODO: docasne naplnenie mien skol z databazy----
             string[] a = new string[2];
@@ -35,9 +36,6 @@ namespace Covid
             c[0] = "GYMNAZIUM"; // nazov
             c[1] = "3"; // ID
             schools.Add(c);
-
-            // TODO: zistit posledne ID v tabulke
-            poradie = 0;
         }
 
         private void g2b_import_Click(object sender, EventArgs e)
@@ -52,7 +50,6 @@ namespace Covid
             oknoVyhladavania.RestoreDirectory = true;
             if (oknoVyhladavania.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 CSVPath = oknoVyhladavania.FileName;
-
 
 
 
@@ -73,8 +70,11 @@ namespace Covid
                 }
 
                 SQLiteWriter(db, "user", zaznamCSV);
+            }
+
 
                 /*
+                // NACITANIE DAT Z DATABAZY
                 List<List<string>> zaznamSQL = new List<List<string>>();
                 SQLiteReader(db, "company", ref zaznamSQL);
                 Console.WriteLine("VYPIS DAT ZO SQL:");
@@ -85,7 +85,6 @@ namespace Covid
                     Console.WriteLine("");
                 }
                 */
-            }
         }
 
         int CSVReader(string filePath, int count, ref List<List<string>> zaznam)
@@ -108,19 +107,6 @@ namespace Covid
                             return -1;
                         }
 
-                        /*
-                        try // test ci ID udaj je cislo
-                        { 
-                            int.Parse(dataZRiadku[0]);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Niektorý záznam neobsahuje číselný údaj v číselnom poli!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Console.WriteLine(ex.ToString());
-                            return -2;
-                        }
-                        */
-
                         List<string> tmp = new List<string>(); // pridanie udajov do zaznamu
                         for (int i = 0; i < count; i++)
                             tmp.Add(dataZRiadku[i]);
@@ -132,7 +118,7 @@ namespace Covid
             {
                 MessageBox.Show("Neočakávaná chyba pri čítaní zo súboru CSV!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.ToString());
-                return -3;
+                return -2;
             }
             return 1;
         }
@@ -141,52 +127,115 @@ namespace Covid
         {
             db.conn.Open();
             SQLiteCommand cmd = new SQLiteCommand(db.conn);
+            int noErrorRecord = 0;
 
             if (table == "company")
             {
+                // ZISKANIE ID POSLEDNEHO ZAZNAMU ORGANIZACIE, PRE POTREBY PRIDANIA NOVEHO S INYM ID
+                string stm = "SELECT * FROM company LIMIT 1000"; // TODO: prediskutovat limit zaznamov (1000)
+                SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
+                SQLiteDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    posledneID = rdr.GetInt32(0);
+
+                // ZAPIS ZAZNAMU S 2 TEXTAMI DO DATABAZY ORGANIZACII
                 foreach (var i in zaznam)
                 {
+                    noErrorRecord++;
                     try
                     {
-                        cmd.CommandText = "INSERT INTO company(Name, Address) VALUES(@name, @address)";
+                        cmd.CommandText = "INSERT INTO company(Id, Name, Address) VALUES(@id, @name, @address)";
+                        cmd.Parameters.AddWithValue("@id", ++posledneID);
                         cmd.Parameters.AddWithValue("@name", i[0]);
                         cmd.Parameters.AddWithValue("@address", i[1]);
                         cmd.Prepare();
                         cmd.ExecuteNonQuery();
                     }
-                    catch (Exception ex){MessageBox.Show("ERROR", "ROVNAKE ID V DATABAZE"); }
-                    // POZOR NIE JE OSETRENIE PRIDAVANIE ZAZNAMU S ROVNAKYM ID, ZATIAL LEN TAKTO CEZ TRY---
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Neočakávaná chyba pri zápise do databázy (organizácia - {noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(ex.ToString());
+                        return;
+                    }
                 }
             }
             else if (table == "user")
             {
+                // TODO: zatial mame len zapis ziakov , preto natvrdo rola ziaka
                 int role = 1; // rola ziaka
+                var today = DateTime.Today; // aktualny datum
+                int age = -1; // vek ziaka
+                int company = -1; // id organizacie
+                int studyOfYear = -1; // rocnik studia
 
+                // ZISKANIE ID POSLEDNEHO ZAZNAMU UZIVATELA, PRE POTREBY PRIDANIA NOVEHO S INYM ID
+                string stm = "SELECT * FROM user LIMIT 10000"; // TODO: prediskutovat limit zaznamov (10000)
+                SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
+                SQLiteDataReader rdr = tmpCmd.ExecuteReader();
+                while (rdr.Read())
+                    posledneID = rdr.GetInt32(0);
+
+                // ZAPIS ZAZNAMU S 10 TEXTAMI DO DATABAZY UZIVATELOV
                 foreach (var i in zaznam)
                 {
+                    noErrorRecord++;
+
+                    // URCENIE VEKU UZIVATELA ZO ZAZNAMU
                     try
                     {
-                        var today = DateTime.Today;
                         var dateOfBirth = i[2].Split('.');
                         var a = (today.Year * 100 + today.Month) * 100 + today.Day;
                         var b = (int.Parse(dateOfBirth[2]) * 100 + int.Parse(dateOfBirth[1])) * 100 + int.Parse(dateOfBirth[0]);
-                        int age = (a - b) / 10000;
+                        age = (a - b) / 10000;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Chyba pri výpočte veku ({noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(ex.ToString());
+                        return;
+                    }
 
-                        string school = "";
+                    // URCENIE TYPU ORGANIZACIE ZO ZAZNAMU
+                    try
+                    {
                         var schoolAddress = i[7].Split(',');
-                        foreach(var j in schools)
+                        foreach (var j in schools)
                         {
                             if (schoolAddress[0] == j[0])
-                                school = j[1];
+                            {
+                                company = int.Parse(j[1]);
+                                break;
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Chyba pri určovaní organizácie ({noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(ex.ToString());
+                        return;
+                    }
 
+                    try
+                    {
+                        studyOfYear = int.Parse(i[8]);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Chyba pri určovaní ročníka štúdia ({noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(ex.ToString());
+                        return;
+                    }
+                    
+                    // ZAPIS DO DATABAZY USER
+                    try
+                    {
                         cmd.CommandText = "INSERT INTO user(Id, School_id, Role_id, Name, Surname, Study_year, Identification_number, Address, Phone, Email, Age, Birth_date, Year_letter) VALUES(@id, @school_id, @role_id, @name, @surname, @study_year, @identification_number, @address, @phone, @email, @age, @birth_date, @year_letter)";
-                        cmd.Parameters.AddWithValue("@id", ++poradie);
-                        cmd.Parameters.AddWithValue("@school_id", school);
+                        cmd.Parameters.AddWithValue("@id", ++posledneID);
+                        cmd.Parameters.AddWithValue("@school_id", company);
                         cmd.Parameters.AddWithValue("@role_id", role);
                         cmd.Parameters.AddWithValue("@name", i[1]);
                         cmd.Parameters.AddWithValue("@surname", i[0]);
-                        cmd.Parameters.AddWithValue("@study_year", i[8]);
+                        cmd.Parameters.AddWithValue("@study_year", studyOfYear);
                         cmd.Parameters.AddWithValue("@identification_number", i[3]);
                         cmd.Parameters.AddWithValue("@address", i[4] + ", " + i[5] + " " + i[6]);
                         cmd.Parameters.AddWithValue("@phone", "");
@@ -197,14 +246,20 @@ namespace Covid
                         cmd.Prepare();
                         cmd.ExecuteNonQuery();
                     }
-                    catch (Exception ex) { MessageBox.Show("ERROR", "ROVNAKE ID V DATABAZE"); }
-                    // POZOR NIE JE OSETRENIE PRIDAVANIE ZAZNAMU S ROVNAKYM ID, ZATIAL LEN TAKTO CEZ TRY---
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Neočakávaná chyba pri zápise do databázy (užívateľ - {noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(ex.ToString());
+                        return;
+                    }
+
                 }
             }
 
             db.conn.Close();    
         }
 
+        /*
         void SQLiteReader(Connection db, string table, ref List<List<string>> zaznam)
         {
             db.conn.Open();
@@ -227,5 +282,6 @@ namespace Covid
 
             db.conn.Close();
         }
+        */
+        }
     }
-}
