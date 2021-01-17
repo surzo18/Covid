@@ -33,7 +33,7 @@ namespace Covid.Models
             this.id_number = id_number;
             this.address = address;
             this.phone = phone;
-            this.mail = email;
+            this.mail = mail;
             this.age = age;
             this.birth_date = birth_date;
             this.year_letter = year_letter;

@@ -11,7 +11,6 @@ namespace Covid.Models
         private int id { get; set; }
         private Person person { get; set; }
         private string dateTime { get; set; }
-        private int round { get; set; }
         private bool isNegative { get; set; }
     }
 }
