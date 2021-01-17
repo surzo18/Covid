@@ -13,7 +13,7 @@ namespace Covid
          */
         public string GetUsersByName(string name, string surname)
         {
-            return "select * from user where name LIKE '%" + name + "%' and surname LIKE '%" + surname + "%'";
+            return "select * from user where name LIKE '" + name + "%' and surname LIKE '" + surname + "%'";
         }
 
         public string GetCompanyById(int id)

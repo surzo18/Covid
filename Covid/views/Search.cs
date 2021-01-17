@@ -44,6 +44,7 @@ namespace Covid
                 guna2DataGridView1.Rows[i].Cells[3].Value = this.personResults[i].id_number;
                 guna2DataGridView1.Rows[i].Cells[4].Value = this.personResults[i].study_year + "." + this.personResults[i].year_letter;
                 guna2DataGridView1.Rows[i].Cells[5].Value = "Pridaj";
+                guna2DataGridView1.Rows[i].Cells[7].Value = "Potvrď";
             }
         }
 
@@ -123,10 +124,12 @@ namespace Covid
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Person clickedOne = this.personResults[e.RowIndex];
-            MessageBox.Show(clickedOne.surname);
-            
+           // MessageBox.Show(clickedOne.surname);
+            Fronta.SendToFront(clickedOne);
+
+
         }
-      
+
 
         private void guna2TextBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -141,10 +144,12 @@ namespace Covid
             if (checkBox1.Checked)
             {
                 guna2DataGridView1.Columns[6].Visible = true;
+                guna2DataGridView1.Columns[7].Visible = true;
             }
             else
             {
                 guna2DataGridView1.Columns[6].Visible = false;
+                guna2DataGridView1.Columns[7].Visible = false;
             }
         }
     }
