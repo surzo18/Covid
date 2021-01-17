@@ -138,6 +138,27 @@ namespace Covid
             this.loadDataForGridFromDb();
             //
         }
+      
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                guna2DataGridView1.Columns[6].Visible = true;
+            }
+            else
+            {
+                guna2DataGridView1.Columns[6].Visible = false;
+            }
+        }
+
+        private void guna2TextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                gunaCircleButton1_Click(this, new EventArgs());
+            }
+        }
 
     }
 }
