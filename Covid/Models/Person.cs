@@ -25,6 +25,7 @@ namespace Covid.Models
 
         public Person(int id, int school_id, int role_id, string name, string surname, int study_year, string id_number, string address, string phone, string mail, int age, string birth_date, string year_letter)
         {
+            this.id = id;
             this.company = Company.getCompanyById(school_id);
             this.role = UserRole.getRoleById(role_id);
             this.name = name;

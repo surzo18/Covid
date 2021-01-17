@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,42 @@ namespace Covid.Views
 {
     public partial class MainMenu : Form
     {
-        public MainMenu()
+        Form login;
+
+        public MainMenu( Form login)
         {
             InitializeComponent();
+            this.login = login;
+            this.login.Hide();
+
+            // VYPISOVANIE INFO O TESTOVANYCH
+            int testovanych = 0;
+            int vsetkych = 0;
+            try
+            {
+                Connection db = new Connection();
+                db.conn.Open();
+                string stm = "SELECT * FROM testing LIMIT 10000"; // TENTO LIMIT TREBA ZVAZIT!
+                SQLiteCommand cmd = new SQLiteCommand(stm, db.conn);
+                SQLiteDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    testovanych++;
+                stm = "SELECT * FROM user LIMIT 10000"; // TENTO LIMIT TREBA ZVAZIT!
+                cmd = new SQLiteCommand(stm, db.conn);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    vsetkych++;
+                db.conn.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Probem s databazou!");
+                Console.WriteLine(ex.ToString());
+            }
+            pocetLudi.Text = "počet testovaných\n" + testovanych.ToString() + "/" + vsetkych.ToString();
+
+
+
         }
 
         private void gunaAdvenceButton1_Click(object sender, EventArgs e)
@@ -62,6 +96,13 @@ namespace Covid.Views
 
         private void guna2ControlBox1_Click(object sender, EventArgs e)
         {
+            login.Close();
+            this.Close();
+        }
+
+        private void gunaAdvenceButton5_Click(object sender, EventArgs e)
+        {
+            login.Show();
             this.Close();
             Application.Exit();
         }

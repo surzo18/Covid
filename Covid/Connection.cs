@@ -12,9 +12,7 @@ namespace Covid
     //////SQLite Edition 
     class Connection
     {
-
-        // POZNAMKA: zmenil som na relativnu cestu, povodna bola = @"URI=file:C:\Users\Admin\Code\Covid\Covid\CovidDatabase.sqlite3";
-        // POZNAMKA: dal som conn ako public, aby som sa k databaze dostal aj z inej classy
+        // TODO: Overit, ci moze byt taketo adresovanie (povodne bolo =@"URI=file:C:\Users\Admin\Code\Covid\Covid\CovidDatabase.sqlite3")
         string sqlLiteDatabaseName = "URI=file:" + Environment.CurrentDirectory + "\\CovidDatabase.sqlite3";
         public SQLiteConnection conn;
 
@@ -35,7 +33,7 @@ namespace Covid
         }
 
  
-
+        // TODO: DELETE THIS :D
         /*
                 conn.Open();
         string stm = "SELECT * FROM company LIMIT 5";
