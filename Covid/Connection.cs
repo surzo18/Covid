@@ -95,7 +95,7 @@ namespace Covid
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Neočakávaná chyba pri zápise do databázy (organizácia - {noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Neočakávaná chyba pri zápise do databázy (organizácia - {errorId})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Console.WriteLine(ex.ToString());
                         return;
                     }
@@ -108,7 +108,7 @@ namespace Covid
                 // ZISKANIE ID POSLEDNEHO ZAZNAMU ORGANIZACIE, PRE POTREBY PRIDANIA NOVEHO S INYM ID
                 string stm = "SELECT * FROM company LIMIT 1000"; // TODO: prediskutovat limit zaznamov (1000)
                 SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
-                SQLiteDataReader rdr = cmd.ExecuteReader();
+                SQLiteDataReader rdr = tmpCmd.ExecuteReader();
                 while (rdr.Read())
                     posledneID = rdr.GetInt32(0);
         */

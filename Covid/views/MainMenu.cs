@@ -14,13 +14,17 @@ namespace Covid.Views
     public partial class MainMenu : Form
     {
         Form login;
-
+        
         public MainMenu( Form login)
         {
             InitializeComponent();
             this.login = login;
             this.login.Hide();
+            ShowCovidInfo();
+        }
 
+        public void ShowCovidInfo() 
+        {
             // VYPISOVANIE INFO O TESTOVANYCH
             int testovanych = 0;
             int vsetkych = 0;
@@ -40,15 +44,13 @@ namespace Covid.Views
                     vsetkych++;
                 db.conn.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Probem s databazou!");
                 Console.WriteLine(ex.ToString());
             }
+
             pocetLudi.Text = "počet testovaných\n" + testovanych.ToString() + "/" + vsetkych.ToString();
-
-
-
         }
 
         private void gunaAdvenceButton1_Click(object sender, EventArgs e)

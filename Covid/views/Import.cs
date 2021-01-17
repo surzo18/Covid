@@ -10,39 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Covid.Models;
+using Covid.Views;
 
 namespace Covid
 {
     public partial class Import : Form
     {
-        List<string[]> schools = new List<string[]>(); // list o skolach...
-        int posledneID;
-
         public Import()
         {
             InitializeComponent();
 
             g2b_import.Text = "Vyhľadať súbor";
-
-            // TODO: docasne naplnenie mien skol z databazy----
-            string[] a = new string[2];
-            a[0] = "Stredná priemyselná škola informačných technológií"; // nazov
-            a[1] = "1"; // ID
-            schools.Add(a);
-            string[] b = new string[2];
-            b[0] = "SOU"; // nazov
-            b[1] = "2"; // ID
-            schools.Add(b);
-            string[] c = new string[2];
-            c[0] = "GYMNAZIUM"; // nazov
-            c[1] = "3"; // ID
-            schools.Add(c);
-
-            //TOOD: spravit to dako cez toto:
-            //this.company = Company.getCompanyById(school_id);
-            //this.role = UserRole.getRoleById(role_id);
-
-
         }
 
         private void g2b_import_Click(object sender, EventArgs e)
@@ -129,31 +107,46 @@ namespace Covid
 
         void SQLiteWriter(List<List<string>> zaznam)
         {
-            /*
+            // TODO: zatial mame len zapis ziakov , preto natvrdo rola ziaka
+            int role = 1; // rola ziaka
+
             Connection db = new Connection();
             db.conn.Open();
             SQLiteCommand cmd = new SQLiteCommand(db.conn);
 
-            int noErrorRecord = 0;
-
-            // TODO: zatial mame len zapis ziakov , preto natvrdo rola ziaka
-            int role = 1; // rola ziaka
+            int errorId = 0; // zapisanie si cisla zaznamu pre lahsie najdenie chyby / DEBUG
             var today = DateTime.Today; // aktualny datum
-            int age = -1; // vek ziaka
-            int company = -1; // id organizacie
-            int studyOfYear = -1; // rocnik studia
+            int age = 0; // vek ziaka
+            int company = 0; // id organizacie
+            int studyOfYear = 0; // rocnik studia
+            List<string[]> schools = new List<string[]>();
 
-            // ZISKANIE ID POSLEDNEHO ZAZNAMU UZIVATELA, PRE POTREBY PRIDANIA NOVEHO S INYM ID
-            string stm = "SELECT * FROM user LIMIT 10000"; // TODO: prediskutovat limit zaznamov (10000)
-            SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
-            SQLiteDataReader rdr = tmpCmd.ExecuteReader();
-            while (rdr.Read())
-                posledneID = rdr.GetInt32(0);
+            // VYTVORENIE ZOZNAMU ORGANIZACII
+            try
+            { 
+                string stm = "SELECT * FROM company LIMIT 1000"; // TODO: prediskutovat limit zaznamov (1000)
+                SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
+                SQLiteDataReader rdr = tmpCmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    string[] tmp = new string[2];
+                    tmp[0] = rdr["id"].ToString(); // ekvivalnet rdr.GetInt32(0);
+                    tmp[1] = rdr["name"].ToString(); // ekvivalnet rdr.GetString(1);
+                    schools.Add(tmp);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Chyba pri načítaní organizácií z databázy!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.ToString());
+                db.conn.Close();
+                return;
+            }
 
-            // ZAPIS ZAZNAMU S 10 TEXTAMI DO DATABAZY UZIVATELOV
+            // ZAPIS DO DATABAZY UZIVATELOV
             foreach (var i in zaznam)
             {
-                noErrorRecord++;
+                errorId++;
 
                 // URCENIE VEKU UZIVATELA ZO ZAZNAMU
                 try
@@ -165,8 +158,9 @@ namespace Covid
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Chyba pri výpočte veku ({noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Chyba pri výpočte veku ({errorId})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Console.WriteLine(ex.ToString());
+                    db.conn.Close();
                     return;
                 }
 
@@ -176,17 +170,18 @@ namespace Covid
                     var schoolAddress = i[7].Split(',');
                     foreach (var j in schools)
                     {
-                        if (schoolAddress[0] == j[0])
+                        if (schoolAddress[0] == j[1])
                         {
-                            company = int.Parse(j[1]);
+                            company = int.Parse(j[0]);
                             break;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Chyba pri určovaní organizácie ({noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Chyba pri určovaní organizácie ({errorId})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Console.WriteLine(ex.ToString());
+                    db.conn.Close();
                     return;
                 }
 
@@ -196,23 +191,23 @@ namespace Covid
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Chyba pri určovaní ročníka štúdia ({noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Chyba pri určovaní ročníka štúdia ({errorId})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Console.WriteLine(ex.ToString());
+                    db.conn.Close();
                     return;
                 }
 
-                // ZAPIS DO DATABAZY USER
+                // ZAPIS DAT DO DATABAZY USER
                 try
                 {
-                    cmd.CommandText = "INSERT INTO user(Id, School_id, Role_id, Name, Surname, Study_year, Identification_number, Address, Phone, Email, Age, Birth_date, Year_letter) VALUES(@id, @school_id, @role_id, @name, @surname, @study_year, @identification_number, @address, @phone, @email, @age, @birth_date, @year_letter)";
-                    cmd.Parameters.AddWithValue("@id", ++posledneID);
+                    cmd.CommandText = "INSERT INTO user(School_id, Role_id, Name, Surname, Study_year, Identification_number, Address, Phone, Email, Age, Birth_date, Year_letter) VALUES(@school_id, @role_id, @name, @surname, @study_year, @identification_number, @address, @phone, @email, @age, @birth_date, @year_letter)";
                     cmd.Parameters.AddWithValue("@school_id", company);
                     cmd.Parameters.AddWithValue("@role_id", role);
                     cmd.Parameters.AddWithValue("@name", i[1]);
                     cmd.Parameters.AddWithValue("@surname", i[0]);
                     cmd.Parameters.AddWithValue("@study_year", studyOfYear);
                     cmd.Parameters.AddWithValue("@identification_number", i[3]);
-                    cmd.Parameters.AddWithValue("@address", i[4] + ", " + i[5] + " " + i[6]);
+                    cmd.Parameters.AddWithValue("@address", i[4] + ", " + i[5] + " " + i[6]); // TODO: nevhodne pre filtrovanie
                     cmd.Parameters.AddWithValue("@phone", "");
                     cmd.Parameters.AddWithValue("@email", "");
                     cmd.Parameters.AddWithValue("@age", age);
@@ -223,15 +218,14 @@ namespace Covid
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Neočakávaná chyba pri zápise do databázy (užívateľ - {noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Neočakávaná chyba pri zápise do databázy ({errorId})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Console.WriteLine(ex.ToString());
+                    db.conn.Close();
                     return;
                 }
-
             }
 
             db.conn.Close();
-            */
         }
     }
 }

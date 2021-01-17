@@ -27,9 +27,20 @@ namespace Covid.Views
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            MainMenu _load = new MainMenu(this);
-            _load.Show();
-        }
+            if (txtUserName.Text == "coviddatabaza" && txtpassword.Text == "covid")
+            {
+                MainMenu _load = new MainMenu(this);
+                _load.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nespravne zadane Meno alebo heslo");
+                txtUserName.Clear();
+                txtpassword.Clear();
+                txtUserName.Focus();
+            }
+            }
+
 
         private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
