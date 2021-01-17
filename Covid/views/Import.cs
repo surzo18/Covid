@@ -37,6 +37,12 @@ namespace Covid
             c[0] = "GYMNAZIUM"; // nazov
             c[1] = "3"; // ID
             schools.Add(c);
+
+            //TOOD: spravit to dako cez toto:
+            //this.company = Company.getCompanyById(school_id);
+            //this.role = UserRole.getRoleById(role_id);
+
+
         }
 
         private void g2b_import_Click(object sender, EventArgs e)

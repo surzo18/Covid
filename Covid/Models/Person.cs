@@ -9,24 +9,40 @@ namespace Covid.Models
 {
     public class Person
     {
-        private int id { get; set; }
-        private Company company { get; set; } //skola
-        private UserRole role { get; set; }
-        private string name { get; set; }
-        private string surname { get; set; }
-        private int study_year { get; set; } //rocnik
-        private string year_letter { get; set; } // A B C D - 4.A
-        private string id_number { get; set; } //rodne cislo
-        private string address { get; set; }
-        private string phone { get; set; }
-        private string mail { get; set; }
-        private int age { get; set; }
-        private string birth_date { get; set; }
+        public int id { get; private set; }
+        public Company company { get; private set; } //skola
+        public UserRole role { get; private set; }
+        public string name { get; private set; }
+        public string surname { get; private set; }
+        public int study_year { get; private set; } //rocnik
+        public string year_letter { get; private set; } // A B C D - 4.A
+        public string id_number { get; private set; } //rodne cislo
+        public string address { get; private set; }
+        public string phone { get; private set; }
+        public string mail { get; private set; }
+        public int age { get; private set; }
+        public string birth_date { get; private set; }
 
-        public Person(int id, int school_id, int role_id, string name, string surname, int study_year, string id_number, string address, string phone, string email, int age, string birth_date, string year_letter)
+        public Person(int id, int school_id, int role_id, string name, string surname, int study_year, string id_number, string address, string phone, string mail, int age, string birth_date, string year_letter)
         {
-            this.company = Company.getCompanyById(school_id);
-            this.role = UserRole.getRoleById(role_id);
+            //TODO: opravit nacitavanie company a role z databazy
+            //this.company = Company.getCompanyById(school_id);
+            //this.role = UserRole.getRoleById(role_id);
+            
+            this.company = new Company(1, "sps", "knm");
+            this.role = new UserRole(1,"ziak");
+
+            this.id = id;
+            this.name = name;
+            this.surname = surname;
+            this.study_year = study_year;
+            this.id_number = id_number;
+            this.address = address;
+            this.phone = phone;
+            this.mail = mail;
+            this.age = age;
+            this.birth_date = birth_date;
+            this.year_letter = year_letter;
         }
 
     }

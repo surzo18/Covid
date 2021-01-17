@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Covid.Models
 {
-    class UserRole
+    public class UserRole
     {
-        private int id { get; set; }
-        private string userRoleName { get; set; }
+        public int id { get; private set; }
+        public string userRoleName { get; private set; }
         
         public UserRole(int id, string userRoleName )
         {
@@ -22,15 +22,17 @@ namespace Covid.Models
         {
             using (SQLiteConnection conn = new Connection().conn)
             {
+                conn.Open();
                 string stm = new CustomQueries().GetCompanyById(id);
 
                 SQLiteCommand cmd = new SQLiteCommand(stm, conn);
                 SQLiteDataReader rdr = cmd.ExecuteReader();
-                return new UserRole(
-                    (int)rdr["id"], 
+                UserRole tmp = new UserRole(
+                    (int)rdr["id"],
                     rdr["name"].ToString()
                     );
                 conn.Close();
+                return tmp;
             };
         }
     }

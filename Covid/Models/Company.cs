@@ -7,28 +7,32 @@ using System.Threading.Tasks;
 
 namespace Covid.Models
 {
-    class Company
+    public class Company
     {
-        private int id { get; set; }
-        private string name { get; set; }
-        private int address { get; set; }
+        public int id { get; private set; }
+        public string name { get; private set; }
+        public string address { get; private set; }
 
 
         public Company(int id, string name, string address)
         {
-
-        }
+            this.id = id;
+            this.name = name;
+            this.address = address;
+        } 
 
         public static Company getCompanyById(int id)
         {
             using (SQLiteConnection conn = new Connection().conn)
             {
+                conn.Open();
                 string stm = new CustomQueries().GetCompanyById(id);
 
                 SQLiteCommand cmd = new SQLiteCommand(stm, conn);
                 SQLiteDataReader rdr = cmd.ExecuteReader();
-                return new Company((int)rdr["id"], rdr["name"].ToString(), rdr["address"].ToString());
+                Company tmp = new Company((int)rdr["id"], rdr["name"].ToString(), rdr["address"].ToString()); // kvoli poradiu uzatvorenia SPOJENIA a RETURNU
                 conn.Close();
+                return tmp;
             };
         }
     }
