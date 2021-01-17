@@ -107,9 +107,5 @@ namespace Covid.Views
             Application.Exit();
         }
 
-        private void gunaAdvenceButton5_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }
