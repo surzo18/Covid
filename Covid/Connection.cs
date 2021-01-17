@@ -32,21 +32,85 @@ namespace Covid
             }
         }
 
- 
-        // TODO: DELETE THIS :D
+
+        // TODO: DELETE THIS , JUST EXAMPLES HOW WORK WITH DATABASE :D
+
         /*
-                conn.Open();
-        string stm = "SELECT * FROM company LIMIT 5";
-
-        SQLiteCommand cmd = new SQLiteCommand(stm, conn);
-        SQLiteDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+        // NACITANIE DAT Z DATABAZY
+        void SQLiteReader(Connection db, string table, ref List<List<string>> zaznam)
+        {
+            db.conn.Open();
+            
+            if (table == "company")
             {
-                Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetInt32(2)}");
+                string stm = "SELECT * FROM company LIMIT 500"; // TENTO LIMIT TREBA ZVAZIT!
+                SQLiteCommand cmd = new SQLiteCommand(stm, db.conn);
+                SQLiteDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    List<string> tmp = new List<string>();
+                    tmp.Add(rdr.GetInt32(0).ToString());
+                    tmp.Add(rdr.GetString(1));
+                    tmp.Add(rdr.GetString(2));
+                    zaznam.Add(tmp);
+                }
             }
+
+            db.conn.Close();
+        }
         */
 
-    }
 
+        /*
+        // Vypis dat na CW
+        List<List<string>> zaznamSQL = new List<List<string>>();
+        SQLiteReader(db, "company", ref zaznamSQL);
+        Console.WriteLine("VYPIS DAT ZO SQL:");
+        foreach (var i in zaznamSQL)
+        {
+        foreach (var j in i)
+        Console.Write(j);
+        Console.WriteLine("");
+        }
+        */
+
+
+
+        /*
+        // ZAPIS DAT DO DATABAZY
+        if (table == "company")
+        {
+                // ZAPIS ZAZNAMU S 2 TEXTAMI DO DATABAZY ORGANIZACII
+                foreach (var i in zaznam)
+                {
+                    try
+                    {
+                        cmd.CommandText = "INSERT INTO company(Id, Name, Address) VALUES(@id, @name, @address)";
+                        cmd.Parameters.AddWithValue("@id", ++posledneID);
+                        cmd.Parameters.AddWithValue("@name", i[0]);
+                        cmd.Parameters.AddWithValue("@address", i[1]);
+                        cmd.Prepare();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Neočakávaná chyba pri zápise do databázy (organizácia - {noErrorRecord})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(ex.ToString());
+                        return;
+                    }
+                }
+        }
+        */
+
+
+        /*
+                // ZISKANIE ID POSLEDNEHO ZAZNAMU ORGANIZACIE, PRE POTREBY PRIDANIA NOVEHO S INYM ID
+                string stm = "SELECT * FROM company LIMIT 1000"; // TODO: prediskutovat limit zaznamov (1000)
+                SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
+                SQLiteDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    posledneID = rdr.GetInt32(0);
+        */
+    }
 }
