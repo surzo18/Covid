@@ -100,11 +100,12 @@ namespace Covid.Views
             this.Close();
         }
 
-        private void gunaAdvenceButton5_Click(object sender, EventArgs e)
+    
+
+        private void gunaAdvenceButton5_Click_1(object sender, EventArgs e)
         {
             login.Show();
             this.Close();
         }
-
     }
 }
