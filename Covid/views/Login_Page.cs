@@ -31,6 +31,8 @@ namespace Covid.Views
             {
                 MainMenu _load = new MainMenu(this);
                 _load.Show();
+                txtUserName.Clear();
+                txtpassword.Clear();
             }
             else
             {

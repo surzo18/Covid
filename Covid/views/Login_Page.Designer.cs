@@ -98,7 +98,7 @@ namespace Covid.Views
             this.txtpassword.HoverState.Parent = this.txtpassword;
             this.txtpassword.Location = new System.Drawing.Point(32, 321);
             this.txtpassword.Name = "txtpassword";
-            this.txtpassword.PasswordChar = '\0';
+            this.txtpassword.PasswordChar = '*';
             this.txtpassword.PlaceholderText = "Heslo";
             this.txtpassword.SelectedText = "";
             this.txtpassword.ShadowDecoration.Parent = this.txtpassword;
