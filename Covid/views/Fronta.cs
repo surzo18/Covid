@@ -33,10 +33,16 @@ namespace Covid
             foreach (var i in personsInFront)
             {
                 if (p.id == i.id)
+                {
+                    MessageBox.Show(p.surname + " " + p.name + " už je vo fronte. Nepodarilo sa pridať.");
                     return;
+                }
             } 
             
             personsInFront.Add(p);
+            MessageBox.Show(p.surname + " " + p.name + " bol pridaný do fronty.");
+            
+            //Todo: neexistuje este na zaciatku - padne to
             btnFronta.Text = "Fronta (" + personsInFront.Count.ToString() + ")";
         }
 

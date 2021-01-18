@@ -28,20 +28,20 @@ namespace Covid.Views
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            //if (txtUserName.Text == "coviddatabaza" && txtpassword.Text == "covid")
+            if (txtUserName.Text == "coviddatabaza" && txtpassword.Text == "covid")
             {
                 MainMenu _load = new MainMenu(this);
                 _load.Show();
                 txtUserName.Clear();
                 txtpassword.Clear();
             }
-            /*else
+            else
             {
                 MessageBox.Show("Nespravne zadane Meno alebo heslo");
                 txtUserName.Clear();
                 txtpassword.Clear();
                 txtUserName.Focus();
-            }*/
+            }
         }
 
 
