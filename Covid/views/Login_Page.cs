@@ -53,5 +53,6 @@ namespace Covid.Views
             else
                 datum = DTPicker.Day.ToString() + "." + DTPicker.Month.ToString() + "." + DTPicker.Year.ToString();
         }
+
     }
 }

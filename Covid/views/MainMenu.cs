@@ -109,5 +109,10 @@ namespace Covid.Views
             login.Show();
             this.Close();
         }
+
+        private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            login.Close();
+        }
     }
 }
