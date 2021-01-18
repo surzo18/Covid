@@ -56,7 +56,7 @@ namespace Covid.Views
         private void gunaAdvenceButton1_Click(object sender, EventArgs e)
         {
             guna2PictureBox_val.Image = Properties.Resources.icons8_search_property_32;
-            container(new Search());
+            container(new Search(this));
         }
 
         private void container(object _form)

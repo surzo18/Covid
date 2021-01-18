@@ -28,7 +28,7 @@ namespace Covid
             lblInfo = (obj as Form).Controls[2].Controls[0] as Label; // info label
         }
 
-        public static void SendToFront(Person p)
+        public static void SendToFront(Person p, object o)
         {
             foreach (var i in personsInFront)
             {
@@ -42,7 +42,8 @@ namespace Covid
             personsInFront.Add(p);
             MessageBox.Show(p.surname + " " + p.name + " bol pridaný do fronty.");
             
-            //Todo: neexistuje este na zaciatku - padne to
+            if(btnFronta == null)
+                btnFronta = (o as Form).Controls[2].Controls[2] as Guna.UI.WinForms.GunaAdvenceButton; // fronta tlacidlo
             btnFronta.Text = "Fronta (" + personsInFront.Count.ToString() + ")";
         }
 

@@ -18,12 +18,14 @@ namespace Covid
         private string searchedSurname;
         private string searchedName;
         private List<Person> personResults;
+        private object mainMenuForm;
 
-        public Search()
+        public Search(object mainMenuForm)
         {
             InitializeComponent();
             this.personResults = new List<Person>();
             guna2DataGridView1.AllowUserToAddRows = false;
+            this.mainMenuForm = mainMenuForm;
         }
        
         private void Search_Load(object sender, EventArgs e)
@@ -124,7 +126,7 @@ namespace Covid
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Person clickedOne = this.personResults[e.RowIndex];
-            Fronta.SendToFront(clickedOne);
+            Fronta.SendToFront(clickedOne, mainMenuForm);
 
 
         }
