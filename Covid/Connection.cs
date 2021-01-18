@@ -14,6 +14,7 @@ namespace Covid
     {
         // TODO: Overit, ci moze byt taketo adresovanie (povodne bolo =@"URI=file:C:\Users\Admin\Code\Covid\Covid\CovidDatabase.sqlite3")
         string sqlLiteDatabaseName = "URI=file:" + Environment.CurrentDirectory + "\\CovidDatabase.sqlite3";
+
         public SQLiteConnection conn;
 
         public Connection()

@@ -134,7 +134,7 @@
     <None Include="Assets\icons8-search-property-32.png" />
     <None Include="Assets\icons8-upload-to-the-cloud-32.png" />
     <Content Include="CovidDatabase.sqlite3">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Views\Login_Page.resx">
       <DependentUpon>Login_Page.cs</DependentUpon>
