@@ -54,6 +54,8 @@ namespace Covid
             // 
             // guna2DataGridView1
             // 
+            this.guna2DataGridView1.AllowUserToResizeColumns = false;
+            this.guna2DataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -277,6 +279,7 @@ namespace Covid
             // Editacia
             // 
             this.Editacia.FillWeight = 35F;
+            this.Editacia.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Editacia.HeaderText = "Editacia";
             this.Editacia.Items.AddRange(new object[] {
             "Potizivný",
@@ -284,7 +287,6 @@ namespace Covid
             "Nezučastnil sa"});
             this.Editacia.MinimumWidth = 6;
             this.Editacia.Name = "Editacia";
-            this.Editacia.ReadOnly = true;
             this.Editacia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Editacia.Visible = false;
             // 

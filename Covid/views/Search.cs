@@ -144,11 +144,13 @@ namespace Covid
         {
             if (checkBox1.Checked)
             {
+                guna2DataGridView1.Columns[5].Visible = false;
                 guna2DataGridView1.Columns[6].Visible = true;
                 guna2DataGridView1.Columns[7].Visible = true;
             }
             else
             {
+                guna2DataGridView1.Columns[5].Visible = true;
                 guna2DataGridView1.Columns[6].Visible = false;
                 guna2DataGridView1.Columns[7].Visible = false;
             }
