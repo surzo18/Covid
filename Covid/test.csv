@@ -1,0 +1,4 @@
+p_priezvisko;p_meno;p_datumNarodenia;p_rodne_cislo;p_domov_ulica;p_domov_psc;p_domov_mesto;Skola->Nazov;rocnik_cislom;Trieda->Meno
+Blažek;Šimon;10.3.2004;040310/4163;Olešná 242;023 52;Olešná;Stredná priemyselná škola informaèných technológií, Nábrežná 1325, 024 01 Kysucké Nové Mesto;2;II.AI
+Boris;Samuel;29.4.2005;050429/4186;è. 170;023 04;Radôstka;Stredná priemyselná škola informaèných technológií, Nábrežná 1325, 024 01 Kysucké Nové Mesto;1;I.AI
+Bukovan;Štefan;3.6.2004;040603/4156;Staškov 156;023 53;Staškov;Stredná priemyselná škola informaèných technológií, Nábrežná 1325, 024 01 Kysucké Nové Mesto;1;I.AI
