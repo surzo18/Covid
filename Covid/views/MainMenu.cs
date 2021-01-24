@@ -20,37 +20,8 @@ namespace Covid.Views
             InitializeComponent();
             this.login = login;
             this.login.Hide();
-            ShowCovidInfo();
-        }
-
-        public void ShowCovidInfo() 
-        {
-            // VYPISOVANIE INFO O TESTOVANYCH
-            int testovanych = 0;
-            int vsetkych = 0;
-            try
-            {
-                Connection db = new Connection();
-                db.conn.Open();
-                string stm = "SELECT * FROM testing LIMIT 10000"; // TENTO LIMIT TREBA ZVAZIT!
-                SQLiteCommand cmd = new SQLiteCommand(stm, db.conn);
-                SQLiteDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                    testovanych++;
-                stm = "SELECT * FROM user LIMIT 10000"; // TENTO LIMIT TREBA ZVAZIT!
-                cmd = new SQLiteCommand(stm, db.conn);
-                rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                    vsetkych++;
-                db.conn.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Probem s databazou!");
-                Console.WriteLine(ex.ToString());
-            }
-
-            pocetLudi.Text = "počet testovaných\n" + testovanych.ToString() + "/" + vsetkych.ToString();
+            // ZAPIS UDAJOV DO INFOPANELU
+            pocetLudi.Text = "počet testovaných\n" + Connection.CountOfTesting().ToString() + "/" + Connection.CountOfUser().ToString();
         }
 
         private void gunaAdvenceButton1_Click(object sender, EventArgs e)

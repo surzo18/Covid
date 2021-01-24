@@ -22,9 +22,24 @@ using iText.Layout;
 using iText.Layout.Borders;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using System.Data.SQLite;
 
 namespace Covid
 {
+    public class TestingUserId
+    {
+        int id;
+        int status;
+        public int Id { get => id; private set => id = value; }
+        public int Status { get => status; private set => status = value; }
+
+        public TestingUserId(int id, int status)
+        {
+            Id = id;
+            Status = status;
+        }
+    }
+
     public partial class Export : Form
     {
         public Export()
@@ -32,18 +47,79 @@ namespace Covid
             InitializeComponent();
         }
 
-        private void g2b_import_Click(object sender, EventArgs e)
+        private void g2b_import_Click(object sender, EventArgs e) // ZOZNAM POZITIVNYCH
         {
-            List<string> dd = new List<string>();
-            for (int i = 0; i < 1000; i++)
+            WritePdf(true);
+        }
+
+
+        private void guna2Button1_Click(object sender, EventArgs e) // ZOZNAM VSETKYCH TESTOVANYCH
+        {
+            WritePdf(false);
+        }
+
+        private void WritePdf(bool onlyPositive)
+        {
+            List<TestingUserId> testingList = new List<TestingUserId>();
+
+            Connection db = new Connection();
+            db.conn.Open();
+
+            try
             {
-                dd.Add(i.ToString());
+                string stm = "SELECT * FROM testing LIMIT 10000"; // TODO: prediskutovat limit zaznamov (10000)
+                SQLiteCommand cmd = new SQLiteCommand(stm, db.conn);
+                SQLiteDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    testingList.Add(new TestingUserId(Convert.ToInt32(rdr["User_id"]), Convert.ToInt32(rdr["Is_negative"]))); // ekvivalnet Convert.ToInt32(rdr["id"]); 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Chyba pri načítaní záznamov o testovaných!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.ToString());
+                db.conn.Close();
+                return;
             }
 
+            List<string> zaznam = new List<string>();  // """8x stringov urcuje jeden zaznam""" 
+            int poradoveCislo = 0;
+            try
+            {
+                SQLiteCommand cmd;
+                SQLiteDataReader rdr;
+                foreach (var i in testingList)
+                {
+                    if (onlyPositive == true)
+                        if (i.Status != 1) // 0-neurčený 1-pozitivny 2-negativny
+                            continue;
 
+                    string stm = $"SELECT * FROM user WHERE Id = \"{i.Id}\"";
+                    cmd = new SQLiteCommand(stm, db.conn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        zaznam.Add((++poradoveCislo).ToString()); // poradove cislo
+                        zaznam.Add(rdr["Name"].ToString()); // meno // ekvivalent zaznam.Add(rdr.GetString(3));
+                        zaznam.Add(rdr["Surname"].ToString()); // priezvisko
+                        zaznam.Add(rdr["Birth_date"].ToString()); // datum narodenia
+                        zaznam.Add(rdr["Identification_number"].ToString()); // rodneCislo
+                        zaznam.Add(rdr["Address"].ToString()); // adresa
+                        zaznam.Add(rdr["Phone"].ToString()); // tel.kontakt
+                        zaznam.Add(" "); // poznamka
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Chyba pri vypĺňaní záznamu o testovaných pre PDF!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.ToString());
+                db.conn.Close();
+                return;
+            }
 
-
-
+            db.conn.Close();
 
             try
             {
@@ -55,7 +131,7 @@ namespace Covid
                     if (saveFileDialog.FileName != "")
                     {
                         string DEST = saveFileDialog.FileName;
-                        CreatePdf(DEST, dd);
+                        CreatePdf(DEST, zaznam);
                     }
             }
             catch (Exception ex)
@@ -176,8 +252,8 @@ namespace Covid
                 doc.Add(table);
 
                 // ZAZNAMY
-                table = new Table(new float[10]).UseAllAvailableWidth();
-                //table = new Table(UnitValue.CreatePercentArray(new float[] { 1,4, 4, 3, 4, 4,4, 2, 4, 1 })).UseAllAvailableWidth();
+                table = new Table(new float[8]).UseAllAvailableWidth();
+                //table = new Table(UnitValue.CreatePercentArray(new float[] { 1,4, 4, 3, 4, 8, 4, 1 })).UseAllAvailableWidth();
 
                 Cell pc = new Cell().Add(new Paragraph("P.č.").SetTextAlignment(TextAlignment.CENTER).SetFont(font));
                 table.AddHeaderCell(pc);
@@ -189,34 +265,20 @@ namespace Covid
                 table.AddHeaderCell(datumN);
                 Cell rodneC = new Cell().Add(new Paragraph("Rodné číslo").SetTextAlignment(TextAlignment.CENTER).SetFont(font));
                 table.AddHeaderCell(rodneC);
-                Cell ulica = new Cell().Add(new Paragraph("Ulica").SetTextAlignment(TextAlignment.CENTER).SetFont(font));
-                table.AddHeaderCell(ulica);
-                Cell mesto = new Cell().Add(new Paragraph("Mesto").SetTextAlignment(TextAlignment.CENTER).SetFont(font));
-                table.AddHeaderCell(mesto);
-                Cell psc = new Cell().Add(new Paragraph("PSČ").SetTextAlignment(TextAlignment.CENTER).SetFont(font));
-                table.AddHeaderCell(psc);
+                Cell adresa = new Cell().Add(new Paragraph("Adresa").SetTextAlignment(TextAlignment.CENTER).SetFont(font));
+                table.AddHeaderCell(adresa);
                 Cell telK = new Cell().Add(new Paragraph("Tel.kontakt").SetTextAlignment(TextAlignment.CENTER).SetFont(font));
                 table.AddHeaderCell(telK);
                 Cell poznamka = new Cell().Add(new Paragraph("Poznámka").SetTextAlignment(TextAlignment.CENTER).SetFont(font));
                 table.AddHeaderCell(poznamka);
-
-
-
-
-
-
+                
+                // ZAPIS DAT DO TABULKY PDF
                 foreach (var i in zaznam)
                 {
                     table.AddCell(new Cell().Add(new Paragraph(i).SetFont(font)));
                 }
 
-
-
-
-
-
                 doc.Add(table);
-
                 doc.Close();
             }
             catch (Exception ex)

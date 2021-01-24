@@ -12,8 +12,7 @@ namespace Covid
     //////SQLite Edition 
     class Connection
     {
-        // TODO: Overit, ci moze byt taketo adresovanie (povodne bolo =@"URI=file:C:\Users\Admin\Code\Covid\Covid\CovidDatabase.sqlite3")
-        string sqlLiteDatabaseName = "URI=file:" + Environment.CurrentDirectory + "\\CovidDatabase.sqlite3";
+        static string sqlLiteDatabaseName = "URI=file:" + Environment.CurrentDirectory + "\\CovidDatabase.sqlite3";
 
         public SQLiteConnection conn;
 
@@ -21,7 +20,7 @@ namespace Covid
         {
             try
             {
-                this.conn = new SQLiteConnection(this.sqlLiteDatabaseName);
+                this.conn = new SQLiteConnection(sqlLiteDatabaseName);
             }
             catch (SQLiteException ex)
             {
@@ -32,6 +31,59 @@ namespace Covid
                 Console.WriteLine("Pripojeny");
             }
         }
+
+        static public int CountOfUser()
+        {
+            int countUser = 0;
+            try
+            {
+                string stm = "SELECT COUNT(*) FROM user";
+                SQLiteConnection conn = new SQLiteConnection(sqlLiteDatabaseName);
+                conn.Open();
+                SQLiteCommand tmpCmd = new SQLiteCommand(stm, conn);
+                SQLiteDataReader rdr = tmpCmd.ExecuteReader();
+                while (rdr.Read())
+                    countUser = rdr.GetInt32(0);
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Chyba pri výpise Info panela!");
+                Console.WriteLine(ex.ToString());
+                return -1;
+            }
+            return countUser;
+        }
+
+        static public int CountOfTesting()
+        {
+            int ucountTesting = 0;
+            try
+            {
+                string stm = "SELECT COUNT(*) FROM testing";
+                SQLiteConnection conn = new SQLiteConnection(sqlLiteDatabaseName);
+                conn.Open();
+                SQLiteCommand tmpCmd = new SQLiteCommand(stm, conn);
+                SQLiteDataReader rdr = tmpCmd.ExecuteReader();
+                while (rdr.Read())
+                    ucountTesting = rdr.GetInt32(0);
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Chyba pri výpise Info panela!");
+                Console.WriteLine(ex.ToString());
+                return -1;
+            }
+            return ucountTesting;
+        }
+
+
+
+
+
+
+
 
 
         // TODO: DELETE THIS , JUST EXAMPLES HOW WORK WITH DATABASE :D
@@ -113,5 +165,7 @@ namespace Covid
                 while (rdr.Read())
                     posledneID = rdr.GetInt32(0);
         */
+
+
     }
 }

@@ -67,12 +67,10 @@ namespace Covid
                 SQLiteWriter(zaznamCSV);
             }
 
-            g2b_import.Text = "Úspešný zápis";
+            g2b_import.Text = "Úspešné načítanie";
 
-            var tmpMsg = lblInfo.Text.Split('\n'); // pripocitanie poctu otestovanych
-            var tmpNO = tmpMsg[1].Split('/');
-            int tmpTst = int.Parse(tmpNO[1]);
-            lblInfo.Text = tmpMsg[0] + "\n" + tmpNO[0] + "/" + (tmpTst + zaznamCSV.Count).ToString();
+            // ZAPIS UDAJOV DO INFOPANELU
+            lblInfo.Text = "počet testovaných\n" + (Connection.CountOfTesting()).ToString() + "/" + (Connection.CountOfUser()).ToString();
         }
 
         int CSVReader(string filePath, int count, ref List<List<string>> zaznam)
@@ -123,6 +121,7 @@ namespace Covid
             SQLiteCommand cmd = new SQLiteCommand(db.conn);
 
             int errorId = 0; // zapisanie si cisla zaznamu pre lahsie najdenie chyby / DEBUG
+            int resultOfDuplicate = 0;
             var today = DateTime.Today; // aktualny datum
             int age = 0; // vek ziaka
             int company = 0; // id organizacie
@@ -156,6 +155,25 @@ namespace Covid
             {
                 errorId++;
 
+                // IGNOROVANIE ZAZNAMU ROVNAKEHO ZIAKA
+                try
+                {
+                    string stm = $"SELECT EXISTS(SELECT 1 FROM user WHERE Identification_number = \"{i[3]}\")";
+                    SQLiteCommand tmpCmd = new SQLiteCommand(stm, db.conn);
+                    SQLiteDataReader rdr = tmpCmd.ExecuteReader();
+                    while (rdr.Read())
+                        resultOfDuplicate = rdr.GetInt32(0);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Chyba pri určovaní zhody záznamu ({errorId})!", "CHYBA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(ex.ToString());
+                    db.conn.Close();
+                    return;
+                }
+                if (resultOfDuplicate == 1)
+                    continue;
+    
                 // URCENIE VEKU UZIVATELA ZO ZAZNAMU
                 try
                 {
@@ -232,7 +250,6 @@ namespace Covid
                     return;
                 }
             }
-
             db.conn.Close();
         }
     }

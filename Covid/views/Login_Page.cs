@@ -28,6 +28,16 @@ namespace Covid.Views
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            //////////////////
+            ///    PROBLEM
+            ///    
+            ///     pri zapisovanie do tabulky USER zacina prve ID s cislom 4 a nie 1!!!!
+            ///     treba to preverit.... (ja pri vytvarani uzivatelov ID nezapisujem = generuje sa samo
+            ///     
+            ///     ////////////
+
+
+
             //if (txtUserName.Text == "coviddatabaza" && txtpassword.Text == "covid")
             {
                 MainMenu _load = new MainMenu(this);

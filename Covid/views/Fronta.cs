@@ -95,10 +95,9 @@ namespace Covid
                         guna2DataGridView1.Rows.RemoveAt(e.RowIndex);
 
                         btnFronta.Text = "Fronta (" + personsInFront.Count.ToString() + ")";
-                        var tmpMsg = lblInfo.Text.Split('\n'); // pripocitanie poctu otestovanych
-                        var tmpNO = tmpMsg[1].Split('/');
-                        int tmpTst = int.Parse(tmpNO[0]);
-                        lblInfo.Text = tmpMsg[0] + "\n" + (++tmpTst).ToString() + "/" + tmpNO[1];
+
+                        // ZAPIS UDAJOV DO INFOPANELU
+                        lblInfo.Text = "počet testovaných\n" + (Connection.CountOfTesting()).ToString() + "/" + (Connection.CountOfUser()).ToString();
                     }
                 }
 
